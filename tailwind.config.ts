@@ -8,8 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        main: '#6B3C24',
+        silver: '#ACADB2'
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        'connect-wl-pattern': "url('/img/hero-pattern.svg')",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
