@@ -9,9 +9,11 @@ export default function QuickSelect() {
       <motion.div
         drag
         dragConstraints={constraintsRef}
-        className=" flex bg-main h-full w-full justify-center items-center "
+        className="flex h-full w-full justify-center bg-transparent items-center"
       >
-        ola mundo
+        <div className="w-max-[800px] h-max-[800px] w-96 h-96 flex bg-main justify-center text-center items-center rounded-lg">
+          ola mundo
+        </div>
       </motion.div>
     </motion.div>
 
