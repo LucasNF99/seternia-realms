@@ -15,7 +15,7 @@ const links = [
   },
   {
     text: 'Locations',
-    url: '',
+    url: '/start/quick-select',
     icon: <Squares2X2Icon width={18} />
   },
   {
@@ -25,6 +25,11 @@ const links = [
   },
   {
     text: 'Settings',
+    url: '',
+    icon: <Cog8ToothIcon width={18} />
+  },
+  {
+    text: 'Disconnect',
     url: '',
     icon: <Cog8ToothIcon width={18} />
   },
@@ -48,13 +53,13 @@ export function Header() {
   }, []);
 
   return (
-    <header className='flex justify-between items-center w-full relative'>
+    <header className='fixed top-0 z-30 w-full flex justify-between p-6'>
       <Profile />
       <div className='relative transition-all'>
-        <button type='button' onClick={() => setIsOpen(!isOpen)}>
+        <button className='hover:scale-95' type='button' onClick={() => setIsOpen(!isOpen)}>
           <Image src={menubtn} alt='menu' />
         </button>
-        <ul ref={menuRef} className={classNames('bg-main  border-silver border-2 divide-y p-4 transition-all absolute top-0 -left-10', { 'hidden': !isOpen })}>
+        <ul ref={menuRef} className={classNames('bg-main border-silver border-2 divide-y p-4 transition-all absolute top-0 -left-20', { 'hidden': !isOpen })}>
           {links.map((item) => (
             <li key={item.text}>
               <Link className='flex items-center gap-1 my-1' href={item.url}><span>{item.icon}</span>{item.text}</Link>
