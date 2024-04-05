@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom';
 import { PublicKey, Transaction } from '@solana/web3.js';
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
+import { Pages } from '@/presentation/enums/pages';
+import { createSignInUsecase } from '@/factories/createSignInUsecase';
 
 interface IBtnWalletConnect {
     wallet: string;
@@ -9,9 +12,21 @@ interface IBtnWalletConnect {
     onClick: () => void;
 }
 
+const login = createSignInUsecase();
+
 const Wallets = ({ wallet, icon, onClick }: IBtnWalletConnect) => {
     const [provider, setProvider] = useState<any | undefined>(undefined);
     const [error, setError] = useState<string | undefined>(undefined);
+    const router = useRouter();
+
+    async function loginWall(publicKey: string) {
+        const loginWallet = await login.execute({ publicKey })
+        console.log(loginWallet)
+        if (loginWallet)
+            void router.push(Pages.START)
+        else
+            return
+    }
 
     useEffect(() => {
         handleConnect();
@@ -51,7 +66,9 @@ const Wallets = ({ wallet, icon, onClick }: IBtnWalletConnect) => {
         }
 
         try {
-            await provider.connect({ onlyIfTrusted: true });
+            const connectValue = await provider.connect({ onlyIfTrusted: true });
+            const pbKey = connectValue?.publicKey ?? connectValue;
+            loginWall(pbKey)
         } catch (error) {
             setError('Failed to connect to Phantom Wallet. Please try again later.');
             console.error(error);
