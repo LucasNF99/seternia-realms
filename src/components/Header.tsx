@@ -14,7 +14,7 @@ import { Pages } from '@/presentation/enums/pages';
 const links = [
   {
     text: 'Profile',
-    url: '',
+    url: '/start',
     icon: <UserCircleIcon width={18} />
   },
   {
@@ -24,22 +24,17 @@ const links = [
   },
   {
     text: 'Tutorial',
-    url: '',
+    url: '/start',
     icon: <Cog8ToothIcon width={18} />
   },
   {
     text: 'Settings',
-    url: '',
-    icon: <Cog8ToothIcon width={18} />
-  },
-  {
-    text: 'Disconnect',
-    url: '',
+    url: '/start',
     icon: <Cog8ToothIcon width={18} />
   },
 ]
 
-const loggof = createSignOutUsecase();
+const logoff = createSignOutUsecase();
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,13 +43,14 @@ export function Header() {
   const [isOpenWalletOption, setIsOpenWalletOption] = useState(false);
   const router = useRouter();
 
-  async function desconnect() {
-    await loggof.execute();
+  async function disconnect() {
+    await logoff.execute();
     router.push(Pages.HOME)
     return;
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     setWallet(useGetWalletId());
   }, [])
 
@@ -78,7 +74,7 @@ export function Header() {
         <button className='hover:scale-95' type='button' onClick={() => setIsOpen(!isOpen)}>
           <Image src={menubtn} alt='menu' />
         </button>
-        <ul ref={menuRef} className={classNames('bg-main border-silver border-2 divide-y p-4 transition-all absolute top-0 -left-20', { 'hidden': !isOpen })}>
+        <ul ref={menuRef} className={classNames('bg-main border-silver border-2 divide-y p-4 transition-all absolute top-0 -left-24', { 'hidden': !isOpen })}>
           {links.map((item) => (
             <li key={item.text}>
               <Link className='flex items-center gap-1 my-1' href={item.url}><span>{item.icon}</span>{item.text}</Link>
@@ -92,8 +88,8 @@ export function Header() {
                 {wallet}
               </button>
             </div>
-            <ul ref={menuRef} className={classNames('bg-main rounded-lg border-silver border-2 divide-y p-2 pr-6 pl-6 transition-all absolute top-16 left-20', { 'hidden': !isOpenWalletOption })}>
-              <button className='overflow-hidden text-ellipsis bg-main border-silver p-2 pr-6 pl-6 rounded-lg hover:scale-95 max-w-[180px]' type='button' onClick={() => desconnect()}>
+            <ul className={classNames('bg-main rounded-lg border-silver border-2 divide-y p-2 pr-6 pl-6 transition-all absolute top-16 left-20', { 'hidden': !isOpenWalletOption })}>
+              <button className='overflow-hidden text-ellipsis bg-main border-silver p-2 pr-6 pl-6 rounded-lg hover:scale-95 max-w-[180px]' type='button' onClick={() => disconnect()}>
                 <li>
                   Disconnect
                 </li>

@@ -14,9 +14,9 @@ export default function InGameLayout({
       className="bg-cover flex flex-col min-h-screen bg-center"
       style={{ backgroundImage: 'url(/components/map-bg.png)' }}>
       <Header />
-      <RecoilRoot>
-        <div className="flex-grow">{children}</div>
-      </RecoilRoot>
+
+      <div className="flex-grow">{children}</div>
+
       <Footer />
     </div>
   );

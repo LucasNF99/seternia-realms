@@ -19,10 +19,6 @@ export function Profile() {
           <p className='flex items-center gap-0.5'><Image src={shield} width={10} height={10} alt='faction icon' />Silver flame</p>
         </div>
       </div>
-      <div className='flex flex-col border-2 bg-main px-8 py-2 rounded-r-lg border-silver'>
-        <p>Kalev</p>
-        <p>Silver flame</p>
-      </div>
     </>
   );
 }
