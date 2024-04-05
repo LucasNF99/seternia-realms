@@ -1,6 +1,9 @@
+
 import type { Metadata } from "next";
 import { Spectral } from "next/font/google";
 import "./globals.css";
+import classNames from "classnames";
+
 
 const spectral = Spectral({
   subsets: ["latin"],
@@ -20,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={spectral.className}>{children}</body>
+      <body className={classNames(spectral.className, "overflow-x-hidden")}>{children}</body>
     </html>
   );
 }

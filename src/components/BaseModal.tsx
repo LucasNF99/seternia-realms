@@ -1,51 +1,45 @@
 "use client";
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import { motion } from "framer-motion";
+import Image from 'next/image';
+import closeButton from '@/../public/components/closeModal.svg';
+import questionButton from '@/../public/components/question.svg';
 
-type AccordionProps = {
-  title: string;
-  children: React.ReactNode;
+type IModalProps = {
+  onClose: () => void;
+  isOpen: boolean;
+  children: ReactNode
 };
 
-export function Accordion({ title, children }: AccordionProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
+export function BaseModal({ onClose, isOpen, children }: IModalProps) {
+  const constraintsRef = useRef(null);
 
   return (
-    <div
-      className={classNames("border bg-main transition-all border-yellow-800 rounded-sm",
-        isOpen ? '' : 'hover:scale-105')}
-
-    >
-      <button
-        onClick={toggleAccordion}
-        className="w-full text-left py-2 px-4 "
-      >
-        <div className="flex justify-between items-center">
-          <span className="font-semibold text-2xl tracking-widest">{title}</span>
-          <svg
-            className={`w-4 h-4 transition-transform ${isOpen ? 'transform rotate-180' : ''
-              }`}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414zM10 3a1 1 0 011 1v5a1 1 0 01-2 0V4a1 1 0 011-1z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </div>
-      </button>
-      {isOpen && (
-        <div className="p-4 border-t border-dashed">
-          {children}
-        </div>
+    <motion.div
+      className={classNames("h-full flex justify-center items-center",
+        { 'hidden': !isOpen }
       )}
-    </div>
+      ref={constraintsRef}
+    >
+      <motion.div
+        drag
+        dragConstraints={constraintsRef}
+        className="flex h-full w-full justify-center bg-transparent items-center"
+      >
+        <article className="flex w-full max-w-[75%] min-h-[500px]  flex-col h-full p-4 bg-main border-2 border-silver rounded-lg">
+          <header className='flex justify-between'>
+            <button type='button'>
+              <Image width={30} src={questionButton} alt='Question button' />
+            </button>
+            <button type='button' onClick={onClose}>
+              <Image width={30} src={closeButton} alt='Close modal button' />
+            </button>
+          </header>
+          {children}
+          <footer></footer>
+        </article>
+      </motion.div>
+    </motion.div>
   );
 }

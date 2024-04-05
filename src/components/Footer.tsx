@@ -25,7 +25,7 @@ export function Footer() {
   };
 
   return (
-    <footer className='fixed bottom-0 z-30 w-full flex items-center justify-between p-6'>
+    <footer className='w-full flex-shrink-0 flex items-center justify-between p-6'>
       <button className='hover:scale-105' type='button' onClick={toggleAudio}>
         <Image src={playing ? unmutedImg : mutedImg} alt='test' />
       </button>
