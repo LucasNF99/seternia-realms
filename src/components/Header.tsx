@@ -6,6 +6,10 @@ import menubtn from '@/../public/components/menu-icon.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Cog8ToothIcon, Squares2X2Icon, UserCircleIcon } from '@heroicons/react/16/solid';
+import { useGetWalletId } from '@/presentation/hook/useGetWalletId';
+import { createSignOutUsecase } from '@/factories/createSignOutUsecase';
+import { useRouter } from "next/navigation";
+import { Pages } from '@/presentation/enums/pages';
 
 const links = [
   {
@@ -35,9 +39,24 @@ const links = [
   },
 ]
 
+const loggof = createSignOutUsecase();
+
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
+  const [wallet, setWallet] = useState<string | undefined>(undefined);
+  const [isOpenWalletOption, setIsOpenWalletOption] = useState(false);
+  const router = useRouter();
+
+  async function desconnect() {
+    await loggof.execute();
+    router.push(Pages.HOME)
+    return;
+  }
+
+  useEffect(() => {
+    setWallet(useGetWalletId());
+  }, [])
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -55,7 +74,7 @@ export function Header() {
   return (
     <header className='w-full flex justify-between p-6'>
       <Profile />
-      <div className='relative transition-all'>
+      <div className='relative transition-all flex space-x-2 items-center'>
         <button className='hover:scale-95' type='button' onClick={() => setIsOpen(!isOpen)}>
           <Image src={menubtn} alt='menu' />
         </button>
@@ -66,7 +85,22 @@ export function Header() {
             </li>
           ))}
         </ul>
-
+        {wallet && (
+          <>
+            <div className='relative transition-all'>
+              <button className='overflow-hidden text-ellipsis bg-main border-silver p-2 pr-6 pl-6 rounded-lg hover:scale-95 max-w-[180px]' type='button' onClick={() => setIsOpenWalletOption(!isOpenWalletOption)}>
+                {wallet}
+              </button>
+            </div>
+            <ul ref={menuRef} className={classNames('bg-main rounded-lg border-silver border-2 divide-y p-2 pr-6 pl-6 transition-all absolute top-16 left-20', { 'hidden': !isOpenWalletOption })}>
+              <button className='overflow-hidden text-ellipsis bg-main border-silver p-2 pr-6 pl-6 rounded-lg hover:scale-95 max-w-[180px]' type='button' onClick={() => desconnect()}>
+                <li>
+                  Disconnect
+                </li>
+              </button>
+            </ul>
+          </>
+        )}
       </div>
     </header>
   );

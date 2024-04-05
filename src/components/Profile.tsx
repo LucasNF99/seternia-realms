@@ -9,7 +9,7 @@ import shield from '@/../public/components/faction-icon.svg';
 export function Profile() {
 
   return (
-    <div>
+    <>
       <div className='flex items-center'>
         <div className='rounded-full border-silver z-0 border-2 -mr-5'>
           <Image src={profile} className='border-4 -z-[2] rounded-full border-main' alt='profile' />
@@ -19,11 +19,10 @@ export function Profile() {
           <p className='flex items-center gap-0.5'><Image src={shield} width={10} height={10} alt='faction icon' />Silver flame</p>
         </div>
       </div>
-
-
-      <div>
-
+      <div className='flex flex-col border-2 bg-main px-8 py-2 rounded-r-lg border-silver'>
+        <p>Kalev</p>
+        <p>Silver flame</p>
       </div>
-    </div>
+    </>
   );
 }
