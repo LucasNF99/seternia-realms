@@ -72,7 +72,7 @@ export default function QuickSelect() {
     <div className="lg:px-40">
       <BaseModal isOpen={isOpen} onClose={handleClose}>
         <h2 className="text-center text-3xl mb-2">Fast Travel</h2>
-        <div className="grid w-full grid-cols-3 gap-4">
+        <div className="grid w-full gap-1 grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {cards.map((item) => (
             <FastTravelCard
               key={item.title}

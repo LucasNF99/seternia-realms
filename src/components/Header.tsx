@@ -76,7 +76,7 @@ export function Header() {
         </button>
         <ul ref={menuRef} className={classNames('bg-main border-silver border-2 divide-y p-4 transition-all absolute top-0 -left-24', { 'hidden': !isOpen })}>
           {links.map((item) => (
-            <li key={item.text}>
+            <li key={item.text} onClick={() => setIsOpen(!isOpen)}>
               <Link className='flex items-center gap-1 my-1' href={item.url}><span>{item.icon}</span>{item.text}</Link>
             </li>
           ))}

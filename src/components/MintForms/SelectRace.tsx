@@ -29,19 +29,19 @@ export function SelectRace() {
         </button>
         <button type="button"
 
-          onClick={() => handleSelectRace("cat")}
+        // onClick={() => handleSelectRace("cat")}
         >
           <FormImageBg highlight={selectedRace == 'cat'} name={"Cat"} image={bonk} cardW="200px" cardH="250px" />
         </button>
         <button type="button"
 
-          onClick={() => handleSelectRace("pepe")}
+        // onClick={() => handleSelectRace("pepe")}
         >
           <FormImageBg highlight={selectedRace == 'pepe'} name={"Pepe"} image={bonk} cardW="200px" cardH="250px" />
         </button>
         <button type="button"
 
-          onClick={() => handleSelectRace("bonk")}
+        // onClick={() => handleSelectRace("bonk")}
         >
           <FormImageBg highlight={selectedRace == 'bonk'} name={"Bonk"} image={bonk} cardW="200px" cardH="250px" />
         </button>

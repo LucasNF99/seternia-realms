@@ -23,15 +23,15 @@ export function SelectClass() {
   return (
     <form className="flex justify-center flex-col items-center">
       <h2 className="text-2xl text-center">Select your class</h2>
-      <div className="flex w-full  gap-8 my-10 justify-between">
+      <div className="w-full my-5 gap-1  lg:gap-8 lg:my-10 grid grid-cols-2 lg:grid-cols-4">
         <button type="button" onClick={() => handleSelectClass("swordsman")}>
-          <FormImageBg highlight={selectedClass == 'swordsman'} name={"Swordsman"} image={sword} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedClass == 'swordsman'} name={"Swordsman"} image={sword} />
         </button>
         <button type="button"
 
         // onClick={() => handleSelectClass("wizard")}
         >
-          <FormImageBg highlight={selectedClass == 'wizard'} name={"Wizard"} image={wizard} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedClass == 'wizard'} name={"Wizard"} image={wizard} />
         </button>
         <button type="button"
 
