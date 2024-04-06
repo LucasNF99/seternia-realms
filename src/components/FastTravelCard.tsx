@@ -16,10 +16,10 @@ type IFastTravelCardProps = {
 export function FastTravelCard({ link, title, bg, buttonImg, inactive }: IFastTravelCardProps) {
 
   return (
-    <div className={classNames('flex  flex-col justify-center items-center', inactive ? 'opacity-75' : '')}>
+    <div className={classNames('flex   flex-col justify-center items-center', inactive ? 'opacity-75' : '')}>
       <Link
         style={{ backgroundImage: bg }}
-        className={classNames('bg-center transition-all  rounded-sm flex justify-center bg-cover h-40 w-[250px]', inactive ? 'cursor-not-allowed' : 'hover:scale-105')}
+        className={classNames('bg-center border-4 border-[#DEC58D] rounded-lg transition-all flex justify-center bg-cover h-40 w-[250px]', inactive ? 'cursor-not-allowed' : 'hover:scale-105')}
         href={link}
       >
         <Image src={buttonImg} alt={title} />

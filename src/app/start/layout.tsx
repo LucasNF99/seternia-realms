@@ -10,14 +10,16 @@ export default function InGameLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div
-      className="bg-cover flex flex-col min-h-screen bg-center"
-      style={{ backgroundImage: 'url(/components/map-bg.png)' }}>
-      <Header />
+    <RecoilRoot>
+      <div
+        className="bg-cover flex flex-col min-h-screen bg-center"
+        style={{ backgroundImage: 'url(/components/map-bg.png)' }}>
+        <Header />
 
-      <div className="flex-grow">{children}</div>
+        <div className="flex-grow">{children}</div>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </RecoilRoot>
   );
 }

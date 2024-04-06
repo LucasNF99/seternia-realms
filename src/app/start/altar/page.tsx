@@ -1,30 +1,67 @@
 "use client";
-import { BaseModal } from "@/components/BaseModal";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from 'next/navigation'
+import { BaseModal } from "@/components/BaseModal";
+import { SelectGenre } from "@/components/MintForms/SelectGenre";
+import { SelectClass } from "@/components/MintForms/SelectClass";
+import { SelectRace } from "@/components/MintForms/SelectRace";
+import { SelectFaction } from "@/components/MintForms/SelectFaction";
+import { createNftAtom } from "@/presentation/atoms/createNftAtom";
+import { useRecoilState } from "recoil";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
 
-export default function QuickSelect() {
+export default function MintPage() {
   const [isOpen, setIsOpen] = useState(false);
+  const [formInfo, setFormInfo] = useRecoilState(createNftAtom);
+  const [currentStep, setCurrentStep] = useState(0);
+
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
-    if (pathname.includes("/quick-select")) {
-      setIsOpen(true);
-    } else {
-      setIsOpen(false);
-    }
+    setIsOpen(pathname.includes("/altar"));
   }, [pathname]);
 
-  function handleClose(): void {
-    router.push('/start')
-  }
+  const handleClose = () => {
+    router.push('/start');
+  };
+
+  const handleNext = () => {
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handlePrev = () => {
+    setCurrentStep(currentStep - 1);
+  };
+
+  const renderForm = () => {
+    switch (currentStep) {
+      case 0:
+        return <SelectGenre />;
+      case 1:
+        return <SelectClass />;
+      case 2:
+        return <SelectRace />;
+      case 3:
+        return <SelectFaction />;
+      default:
+        return null;
+    }
+  };
 
   return (
-    <>
+    <div className="flex flex-col justify-center items-center">
       <BaseModal isOpen={isOpen} onClose={handleClose}>
-        <h2 className="text-center text-3xl mb-2">Fast Travel</h2>
+        {renderForm()}
+        <div className="flex justify-center gap-6 mt-4">
+          {currentStep > 0 && currentStep != 3 && (
+            <button className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center" onClick={handlePrev}><ArrowLeftIcon width={20} />Previous</button>
+          )}
+          {currentStep < 3 && (
+            <button className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center" onClick={handleNext}>Next <ArrowRightIcon width={20} /></button>
+          )}
+        </div>
       </BaseModal>
-    </>
+    </div>
   );
 }

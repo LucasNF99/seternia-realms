@@ -9,15 +9,17 @@ import questionButton from '@/../public/components/question.svg';
 type IModalProps = {
   onClose: () => void;
   isOpen: boolean;
-  children: ReactNode
+  children: ReactNode,
+  bgColor?: string;
+  size?: string;
 };
 
-export function BaseModal({ onClose, isOpen, children }: IModalProps) {
+export function BaseModal({ onClose, isOpen, children, bgColor, size }: IModalProps) {
   const constraintsRef = useRef(null);
 
   return (
     <motion.div
-      className={classNames("h-full flex justify-center items-center",
+      className={classNames(" flex justify-center items-center",
         { 'hidden': !isOpen }
       )}
       ref={constraintsRef}
@@ -25,9 +27,9 @@ export function BaseModal({ onClose, isOpen, children }: IModalProps) {
       <motion.div
         drag
         dragConstraints={constraintsRef}
-        className="flex h-full w-full justify-center bg-transparent items-center"
+        className="flex  w-full justify-center bg-transparent items-center"
       >
-        <article className="flex w-full max-w-[75%] min-h-[500px]  flex-col h-full p-4 bg-main border-2 border-silver rounded-lg">
+        <article className={classNames("flex flex-col w-full  p-4 bg-main border-2 border-silver rounded-lg", bgColor ? bgColor : 'bg-main', size ? 'max-w-[45%]' : 'min-w-full max-w-[75%]')}>
           <header className='flex justify-between'>
             <button type='button'>
               <Image width={30} src={questionButton} alt='Question button' />
