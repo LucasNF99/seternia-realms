@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={classNames(spectral.className, "overflow-x-hidden")}>{children}</body>
+      <body className={classNames(spectral.className, "overflow-x-hidden text-white")}>{children}</body>
     </html>
   );
 }

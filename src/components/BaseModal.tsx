@@ -29,7 +29,7 @@ export function BaseModal({ onClose, isOpen, children, bgColor, size }: IModalPr
         dragConstraints={constraintsRef}
         className="flex  w-full justify-center bg-transparent items-center"
       >
-        <article className={classNames("flex flex-col w-full  p-4 bg-main border-2 border-silver rounded-lg", bgColor ? bgColor : 'bg-main', size ? 'max-w-[45%]' : 'min-w-full max-w-[75%]')}>
+        <article className={classNames("flex flex-col w-full p-4 border-2 border-silver rounded-lg", bgColor ? bgColor : 'bg-main', size ? 'max-w-[45%]' : 'min-w-full max-w-[75%]')}>
           <header className='flex justify-between'>
             <button type='button'>
               <Image width={30} src={questionButton} alt='Question button' />

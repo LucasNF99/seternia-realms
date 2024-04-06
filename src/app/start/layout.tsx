@@ -12,7 +12,7 @@ export default function InGameLayout({
   return (
     <RecoilRoot>
       <div
-        className="bg-cover flex flex-col min-h-screen bg-center"
+        className="bg-cover text-white flex flex-col min-h-screen bg-center"
         style={{ backgroundImage: 'url(/components/map-bg.png)' }}>
         <Header />
 
