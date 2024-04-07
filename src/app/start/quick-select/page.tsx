@@ -8,24 +8,23 @@ import market from '@/../public/components/market.svg';
 import altar from '@/../public/components/altar.svg';
 import bonk from '@/../public/components/bonk.svg';
 import eastDungeon from '@/../public/components/east-dungeon.svg';
-import altarBg from '@/../public/components/altar-bg.svg';
-import dungeonBg from '@/../public/components/dungeon-bg.svg';
+import trainingBt from '@/../public/components/trainingButton.svg';
 
 
 const cards = [
   {
-    title: 'Trade...',
+    title: 'Find services of all kinds around here',
     buttonImg: townHall,
     link: '/start/quick-select',
     bg: 'url(/components/altar-bg.svg)',
     inactive: true
   },
   {
-    title: 'Buy and sell items',
-    buttonImg: market,
-    link: '/start/quick-select',
-    bg: 'url(/components/altar-bg.svg)',
-    inactive: true
+    title: 'Training',
+    buttonImg: trainingBt,
+    link: '/start/training',
+    bg: 'url(/components/trainBg.png)',
+    inactive: false
   },
   {
     title: 'Summon your hero',
