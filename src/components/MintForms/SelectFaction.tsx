@@ -33,7 +33,7 @@ export function SelectFaction() {
   return (
     <form className="flex justify-center flex-col items-center" onSubmit={handleSubmit}>
       <h2 className="text-2xl text-center">Select your faction</h2>
-      <div className="flex w-full  gap-8 my-10 justify-between">
+      <div className="w-full my-5 gap-1  lg:gap-8 lg:my-10 grid grid-cols-2 lg:grid-cols-4">
         <button type="button" onClick={() => handleSelectFac("flame")}>
           <FormImageBg highlight={selectedFaction == 'flame'} name={"Silver Flame"} image={flame} cardW="200px" cardH="250px" />
         </button>
@@ -48,11 +48,6 @@ export function SelectFaction() {
         </button>
       </div>
       <StepsMint currentStep={4} />
-      <div className="flex justify-center gap-4 mt-8">
-        <button type="submit" className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center">
-          Mint your hero
-        </button>
-      </div>
     </form>
   );
 }

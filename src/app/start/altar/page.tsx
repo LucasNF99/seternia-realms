@@ -49,13 +49,28 @@ export default function MintPage() {
     }
   };
 
+  const handleMint = () => {
+    if (formInfo.genre == undefined || formInfo.class == undefined || formInfo.race == undefined || formInfo.faction == undefined) {
+      console.error('Select all of the previews options')
+    } else {
+      console.log(formInfo)
+    }
+  }
+
   return (
     <div className="flex flex-col justify-center items-center">
       <BaseModal isOpen={isOpen} onClose={handleClose}>
         {renderForm()}
         <div className="flex justify-center gap-6 mt-4">
-          {currentStep > 0 && currentStep != 3 && (
-            <button className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center" onClick={handlePrev}><ArrowLeftIcon width={20} />Previous</button>
+          {currentStep > 0 && (
+            <>
+              <button className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center" onClick={handlePrev}><ArrowLeftIcon width={20} />Previous</button>
+              {currentStep == 3 && (
+                <button type="button" onClick={handleMint} className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center">
+                  Mint your hero
+                </button>
+              )}
+            </>
           )}
           {currentStep < 3 && (
             <button className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center" onClick={handleNext}>Next <ArrowRightIcon width={20} /></button>
