@@ -12,7 +12,7 @@ export default function InGameLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const shouldChangeBackground = pathname.includes("/start/treining");
+  const shouldChangeBackground = pathname.includes("/start/training");
 
   return (
     <RecoilRoot>
@@ -20,7 +20,7 @@ export default function InGameLayout({
         className="bg-cover text-white flex flex-col min-h-screen bg-center"
         style={{
           backgroundImage: shouldChangeBackground
-            ? 'url(/maps/treining.jpg)'
+            ? 'url(/components/training_img.jpg)'
             : 'url(/components/map-bg.png)'
         }}>
         <Header />
