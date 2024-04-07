@@ -28,11 +28,15 @@ export default function QuickSelect() {
   const simple_mint = async () => {
     console.log(publicKey)
     try {
-      await SMintTx(
+      const tx = await SMintTx(
         wallet, 
         connection,
       );
-      router.push('/start/altar')
+      if(tx){
+        router.push('/start/altar')
+      }else{
+        alert("Error in Mint NFT trasnaction")
+      }
     } catch (error) {
       console.log("Input incorrect")
     }
