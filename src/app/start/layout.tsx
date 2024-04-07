@@ -2,6 +2,8 @@
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
 
 export default function InGameLayout({
@@ -9,15 +11,20 @@ export default function InGameLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const shouldChangeBackground = pathname.includes("/start/treining");
+
   return (
     <RecoilRoot>
       <div
         className="bg-cover text-white flex flex-col min-h-screen bg-center"
-        style={{ backgroundImage: 'url(/components/map-bg.png)' }}>
+        style={{
+          backgroundImage: shouldChangeBackground
+            ? 'url(/maps/treining.jpg)'
+            : 'url(/components/map-bg.png)'
+        }}>
         <Header />
-
         <div className="flex-grow">{children}</div>
-
         <Footer />
       </div>
     </RecoilRoot>
