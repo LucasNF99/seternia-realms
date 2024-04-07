@@ -23,9 +23,9 @@ export function SelectGenre() {
 
 
   return (
-    <form className="flex justify-center flex-col items-center">
+    <form className="flex justify-center lg:mx-20 flex-col items-center">
       <h2 className="text-2xl text-center">Select your genre</h2>
-      <div className="flex w-full gap-2 my-5  lg:gap-8 lg:my-10 justify-between">
+      <div className="flex w-full gap-2 my-5   lg:gap-8 lg:my-10 justify-between">
         <button type="button" onClick={() => handleSelectGenre("male")}>
           <FormImageBg highlight={selectedGenre == 'male'} name={"Male"} image={male} imageW={140} />
         </button>

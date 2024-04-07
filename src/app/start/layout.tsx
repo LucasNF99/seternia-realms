@@ -13,6 +13,8 @@ export default function InGameLayout({
 }>) {
   const pathname = usePathname();
   const shouldChangeBackground = pathname.includes("/start/training");
+  const runeBg = pathname.includes("/start/mint-rune");
+  const altar = pathname.includes("/start/altar");
 
   return (
     <RecoilRoot>
@@ -21,7 +23,7 @@ export default function InGameLayout({
         style={{
           backgroundImage: shouldChangeBackground
             ? 'url(/components/training_img.jpg)'
-            : 'url(/components/map-bg.png)'
+            : (runeBg ? 'url(/components/altar-bg.svg)' : (altar ? 'url(/components/altar-bg.png)' : 'url(/components/map-bg.png)'))
         }}>
         <Header />
         <div className="flex-grow">{children}</div>
