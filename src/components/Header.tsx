@@ -24,7 +24,7 @@ const links = [
   },
   {
     text: 'Tutorial',
-    url: '/start/treining',
+    url: '/start/training',
     icon: <Cog8ToothIcon width={18} />
   },
   {

@@ -11,7 +11,7 @@ import { TrainingCamp } from "@/components/MintForms/TrainingCamp";
 import { TalkModal } from "@/components/TalkModal";
 import { TalkSection } from "@/components/TalkSection";
 
-export default function TreiningPage() {
+export default function TrainingPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -19,7 +19,7 @@ export default function TreiningPage() {
   const router = useRouter();
 
   useEffect(() => {
-    setIsOpen(pathname.includes("/treining"));
+    setIsOpen(pathname.includes("/training"));
   }, [pathname]);
 
   const handleClose = () => {
@@ -42,7 +42,7 @@ export default function TreiningPage() {
       </BaseModal>
       <section id="talk" className="mt-4">
         <TalkModal bgColor={"bg-transparent"} border={false} isOpen={isOpen} onClose={handleClose}>
-          <TalkSection text={"Hello brave adventurer! Are you ready to begin the training? <br />If you're willing to train, you'll receive an amount of GOLD as a reward!</p>"} />
+          <TalkSection personName={"Master Warrior"} text={"Hello brave adventurer! Are you ready to begin the training? <br />If you're willing to train, you'll receive an amount of GOLD as a reward!</p>"} />
         </TalkModal>
       </section>
     </div>
