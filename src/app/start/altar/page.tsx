@@ -9,6 +9,7 @@ import { SelectFaction } from "@/components/MintForms/SelectFaction";
 import { createNftAtom } from "@/presentation/atoms/createNftAtom";
 import { useRecoilState } from "recoil";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
 
 export default function MintPage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,6 +57,16 @@ export default function MintPage() {
       console.log(formInfo)
     }
   }
+
+  const wallet = useAnchorWallet()
+
+
+  useEffect(() => {
+    if (wallet) {
+      wallet.publicKey != null
+    }
+    console.log({ wallet });
+  }, [wallet])
 
   return (
     <div className="flex flex-col justify-center items-center">

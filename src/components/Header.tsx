@@ -10,7 +10,10 @@ import { useGetWalletId } from '@/presentation/hook/useGetWalletId';
 import { createSignOutUsecase } from '@/factories/createSignOutUsecase';
 import { useRouter } from "next/navigation";
 import { Pages } from '@/presentation/enums/pages';
-
+import { useAnchorWallet, useWallet } from '@solana/wallet-adapter-react';
+import {
+  WalletMultiButton,
+} from "@solana/wallet-adapter-react-ui";
 const links = [
   {
     text: 'Profile',
@@ -42,6 +45,16 @@ export function Header() {
   const [wallet, setWallet] = useState<string | undefined>(undefined);
   const [isOpenWalletOption, setIsOpenWalletOption] = useState(false);
   const router = useRouter();
+  const walletInfo = useAnchorWallet();
+  const teste = useWallet();
+
+
+  useEffect(() => {
+    if (walletInfo) {
+      walletInfo.publicKey != null
+    }
+    console.log({ walletInfo, teste });
+  }, [teste, walletInfo])
 
   async function disconnect() {
     await logoff.execute();
@@ -81,20 +94,9 @@ export function Header() {
             </li>
           ))}
         </ul>
+        <WalletMultiButton />
         {wallet && (
           <>
-            <div className='relative transition-all'>
-              <button className='overflow-hidden text-ellipsis bg-main border-silver p-2 pr-6 pl-6 rounded-lg hover:scale-95 max-w-[180px]' type='button' onClick={() => setIsOpenWalletOption(!isOpenWalletOption)}>
-                {wallet}
-              </button>
-            </div>
-            <ul className={classNames('bg-main rounded-lg border-silver border-2 divide-y p-2 pr-6 pl-6 transition-all absolute top-16 left-20', { 'hidden': !isOpenWalletOption })}>
-              <button className='overflow-hidden text-ellipsis bg-main border-silver p-2 pr-6 pl-6 rounded-lg hover:scale-95 max-w-[180px]' type='button' onClick={() => disconnect()}>
-                <li>
-                  Disconnect
-                </li>
-              </button>
-            </ul>
           </>
         )}
       </div>
