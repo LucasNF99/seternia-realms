@@ -1,4 +1,6 @@
 "use client";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import { MintTx } from "../../../contract/transaction";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from 'next/navigation'
 import { BaseModal } from "@/components/BaseModal";
@@ -9,12 +11,15 @@ import { SelectFaction } from "@/components/MintForms/SelectFaction";
 import { createNftAtom } from "@/presentation/atoms/createNftAtom";
 import { useRecoilState } from "recoil";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
-import { useAnchorWallet } from "@solana/wallet-adapter-react";
+import BN from "bn.js";
 
 export default function MintPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [formInfo, setFormInfo] = useRecoilState(createNftAtom);
   const [currentStep, setCurrentStep] = useState(0);
+
+  const wallet = useAnchorWallet()
+  const { connection } = useConnection()
 
   const pathname = usePathname();
   const router = useRouter();
@@ -49,24 +54,25 @@ export default function MintPage() {
         return null;
     }
   };
-
-  const handleMint = () => {
+  const handleMint = async () => {
     if (formInfo.genre == undefined || formInfo.class == undefined || formInfo.race == undefined || formInfo.faction == undefined) {
       console.error('Select all of the previews options')
     } else {
+      try {
+        await MintTx(
+          wallet, 
+          connection, 
+          new BN(1),
+          new BN(1),
+          new BN(1)
+        );
+        handleClose()
+      } catch (error) {
+        console.log("Input incorrect")
+      }
       console.log(formInfo)
     }
   }
-
-  const wallet = useAnchorWallet()
-
-
-  useEffect(() => {
-    if (wallet) {
-      wallet.publicKey != null
-    }
-    console.log({ wallet });
-  }, [wallet])
 
   return (
     <div className="flex flex-col justify-center items-center">
