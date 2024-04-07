@@ -123,13 +123,13 @@ export const MintTx = async (
   );
   try {
     // validate nft
-    const metaplex = new Metaplex(connection)
-    metaplex.use(walletAdapterIdentity(wallet))
-    const nfts = await metaplex.nfts().findAllByOwner({ owner: treasury_data.admin })
+    var metaplex = new Metaplex(connection).use(walletAdapterIdentity(wallet))
+    const nfts = await metaplex.nfts().findAllByOwner({ owner: wallet.publicKey })
     let cump_limit = ComputeBudgetProgram.setComputeUnitLimit({ units: 800_000 });
     if (nfts != null) {
       console.log("r ",treasury_data.runeCollection.toString())
       nfts.forEach(async nft => {
+        console.log(nft.address.toString())
         if (
           nft.collection?.verified != null 
           && nft.collection?.verified == true
@@ -137,6 +137,7 @@ export const MintTx = async (
             info.RuneKey = nft.address
         }
       });
+      
       const nft_addr = await metaplex.nfts().findByMetadata({metadata: info.RuneKey});
       info.RuneKey = nft_addr.address;
       if (info.RuneKey != new PublicKey("11111111111111111111111111111111")){
