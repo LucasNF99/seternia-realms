@@ -2,7 +2,6 @@ import { FormImageBg } from "../FormImageBg";
 import { useState } from "react";
 import { createNftAtom } from "@/presentation/atoms/createNftAtom";
 import { useRecoilState } from "recoil";
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
 import flame from '@/../public/components/flameFac.svg';
 import twilight from '@/../public/components/twilightFac.svg';
 import arcane from '@/../public/components/arcaneFac.svg';
@@ -27,6 +26,7 @@ export function SelectFaction() {
       console.error('Select all of the previews options')
     } else {
       console.log(heroRace)
+
     }
   }
 
