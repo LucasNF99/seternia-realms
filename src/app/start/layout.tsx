@@ -20,7 +20,7 @@ export default function InGameLayout({
         className="bg-cover text-white flex flex-col min-h-screen bg-center"
         style={{
           backgroundImage: shouldChangeBackground
-            ? 'url(/components/training.jpg)'
+            ? 'url(/components/training_img.jpg)'
             : 'url(/components/map-bg.png)'
         }}>
         <Header />
