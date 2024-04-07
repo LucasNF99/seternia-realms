@@ -5,7 +5,6 @@ import { usePathname, useRouter } from 'next/navigation'
 import rune from '@/../public/components/rune.gif';
 import Image from "next/image";
 
-
 export default function QuickSelect() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
