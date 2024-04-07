@@ -18,6 +18,7 @@ export const MintTx = async (
   cid:BN,
   tid:BN
 ) => {
+  var pass = false;
   // check the connection
   if (!wallet.publicKey || !connection) {
     console.log("Warning: Wallet not connected")
@@ -209,10 +210,12 @@ export const MintTx = async (
               blockhash: blockhash.blockhash,
               lastValidBlockHeight: blockhash.lastValidBlockHeight
             }, "processed");
-            console.log("Successfully changed collection.\n Signature: ", signature);
+            pass = true;
+            alert(`Successfully Mint NFT.\n Signature: ${signature}`)
+            console.log("Successfully Mint NFT.\n Signature: ", signature);
           }
         } catch (error) {
-          console.log("Error in changing collection trasnaction", error)
+          console.log("Error in Mint NFT  trasnaction", error)
         }
       }else{
         console.log("no nft address..")
@@ -223,11 +226,13 @@ export const MintTx = async (
   } catch (error) {
     console.log("NFT address is incorrect", error)
   }
+  return pass
 }
 export const SMintTx = async (
   wallet: AnchorWallet,
   connection: Connection,
 ) => {
+  var pass = false;
   // check the connection
   if (!wallet.publicKey || !connection) {
     console.log("Warning: Wallet not connected")
@@ -333,12 +338,15 @@ export const SMintTx = async (
           blockhash: blockhash.blockhash,
           lastValidBlockHeight: blockhash.lastValidBlockHeight
         }, "processed");
-        console.log("Successfully changed collection.\n Signature: ", signature);
+        pass = true;
+          alert(`Successfully Mint NFT.\n Signature: ${signature}`)
+        console.log("Successfully Mint NFT.\n Signature: ", signature);
       }
     } catch (error) {
-      console.log("Error in changing collection trasnaction", error)
+      console.log("Error in Mint NFT trasnaction", error)
     }
   } catch (error) {
     console.log("NFT address is incorrect", error)
   }
+  return pass
 }
