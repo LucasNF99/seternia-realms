@@ -59,14 +59,18 @@ export default function MintPage() {
       console.error('Select all of the previews options')
     } else {
       try {
-        await MintTx(
+        const tx = await MintTx(
           wallet, 
           connection, 
           new BN(1),
           new BN(1),
           new BN(1)
         );
-        handleClose()
+        if(tx){
+          handleClose()
+        }else{
+          alert("Error in Mint NFT trasnaction")
+        }
       } catch (error) {
         console.log("Input incorrect")
       }
