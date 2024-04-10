@@ -14,6 +14,7 @@ import { useMemo } from "react";
 import classNames from "classnames";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
+import { CustomToast } from "@/components/CustomToast";
 
 const spectral = Spectral({
   subsets: ["latin"],
@@ -40,7 +41,7 @@ export default function RootLayout({
         <ConnectionProvider endpoint={endpoint}>
           <WalletProvider wallets={wallets}>
             <WalletModalProvider>
-              {children}
+              {children}<CustomToast />
             </WalletModalProvider>
           </WalletProvider>
         </ConnectionProvider>

@@ -23,7 +23,7 @@ export default function Home() {
     if (hasWallet) {
       router.push("/start");
     }
-  }, [hasWallet]);
+  }, [hasWallet, router]);
 
   return (
     <main

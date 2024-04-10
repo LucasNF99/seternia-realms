@@ -36,9 +36,9 @@ const cards = [
   {
     title: 'Explore the Bonk ruins',
     buttonImg: bonk,
-    link: '/start/quick-select',
+    link: '/start/bonk-ruins',
     bg: 'url(/components/dungeon-bg.svg)',
-    inactive: true
+    inactive: false
   },
   {
     title: 'Explore the ruins of East',

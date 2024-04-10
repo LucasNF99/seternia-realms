@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
-import profile from '@/../public/components/swordsmanprnt.png';
+import profile from '@/../public/components/bonk-profile.svg';
 
 type ITalkProps = {
     text: string,
@@ -14,7 +14,7 @@ export function TalkSection({ text, personName, img }: ITalkProps) {
 
     return (
         <>
-            <div className='flex items-start flex-col border-2 bg-[#DEC58D] px-8 py-2 rounded-lg border-main'>
+            <div className='flex items-start flex-col border-2 bg-[#DEC58D] px-8 py-2 rounded-lg border-main lg:max-w-[60%] mx-auto'>
                 <div className='flex flex-row'>
                     <div className='flex flex-col -ml-16'>
                         <div className='flex'>
@@ -22,7 +22,7 @@ export function TalkSection({ text, personName, img }: ITalkProps) {
                                 <Image src={profile} className='border-4 -z-[2] rounded-full border-main' width={120} height={120} alt='profile' />
                             </div>
                         </div>
-                        <div className='border-2 border-silver pr-2 pl-2 bg-main mt-2'>
+                        <div className='border-2 whitespace-nowrap border-silver pr-2 pl-2 bg-main mt-2'>
                             <span className='font-semibold text-lg'>{personName}</span>
                         </div>
                     </div>

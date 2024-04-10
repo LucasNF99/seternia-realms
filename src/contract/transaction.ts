@@ -3,13 +3,26 @@ import { ComputeBudgetProgram, Connection, PublicKey, SYSVAR_RENT_PUBKEY, System
 import { TOKEN_PROGRAM_ID,ASSOCIATED_TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from '@solana/spl-token';
 import { AnchorProvider, setProvider } from "@coral-xyz/anchor"
 import { Faction, Treasure,STreasure } from "./types"
-import { active,mint,smint,getProgram, getProgramS } from "./instructions"
+import { active,mint,smint,getProgram, getProgramS } from "./instructions";;
 import { Metaplex, walletAdapterIdentity } from "@metaplex-foundation/js"
 import BN from "bn.js";
+import { useSnackbar } from "@/presentation/hook/useSnackbar";
+ import { toast } from 'react-toastify';
+import Link from "next/link";
 const info = {
   TOKEN_METADATA_PROGRAM_ID: new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"),
   RuneKey: new PublicKey("11111111111111111111111111111111"),
 }
+
+const CustomToastWithLink = (tx) => (
+  `<div>
+    <Link href='${tx}'>This is a link</Link>
+  </div>`
+);
+
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const { enqueueSnackbar } = useSnackbar();
 
 export const MintTx = async (
   wallet: AnchorWallet,
@@ -212,7 +225,9 @@ export const MintTx = async (
               lastValidBlockHeight: blockhash.lastValidBlockHeight
             }, "processed");
             pass = true;
-            alert(`Successfully Mint NFT.\n Signature: ${signature}`)
+            // alert(`Successfully Mint NFT.\n Signature: ${signature}`)
+            	enqueueSnackbar(`TX: ${signature}`,{variant: "success"});
+
             console.log("Successfully Mint NFT.\n Signature: ", signature);
           }
         } catch (error) {
@@ -340,8 +355,13 @@ export const SMintTx = async (
           lastValidBlockHeight: blockhash.lastValidBlockHeight
         }, "processed");
         pass = true;
-          alert(`Successfully Mint NFT.\n Signature: ${signature}`)
-        console.log("Successfully Mint NFT.\n Signature: ", signature);
+          // alert(`Successfully Mint NFT.\n Signature: ${signature}`)
+            enqueueSnackbar(`TX: ${signature}`,{variant: "success"});
+
+        console.log({
+          signature,
+          blockhash,
+        });
       }
     } catch (error) {
       console.log("Error in Mint NFT trasnaction", error)
