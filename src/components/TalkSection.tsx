@@ -14,7 +14,7 @@ export function TalkSection({ text, personName, img }: ITalkProps) {
 
     return (
         <>
-            <div className='flex items-start flex-col border-2 bg-[#DEC58D] px-8 py-2 rounded-lg border-main lg:max-w-[60%] mx-auto'>
+            <div className='flex items-start flex-col border-2 bg-[#DEC58D] px-8 py-2 rounded-lg border-main  mx-auto'>
                 <div className='flex flex-row'>
                     <div className='flex flex-col -ml-16'>
                         <div className='flex'>

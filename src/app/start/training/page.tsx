@@ -40,11 +40,11 @@ export default function TrainingPage() {
       <BaseModal isOpen={isOpen} onClose={handleClose}>
         {renderForm()}
       </BaseModal>
-      <section id="talk" className="mt-4">
-        <TalkModal bgColor={"bg-transparent"} border={false} isOpen={isOpen} onClose={handleClose}>
-          <TalkSection personName={"Master Warrior"} text={"Hello brave adventurer! Are you ready to begin the training? <br />If you're willing to train, you'll receive an amount of GOLD as a reward!</p>"} />
-        </TalkModal>
-      </section>
+
+      <TalkModal bgColor={"bg-transparent"} border={false} isOpen={isOpen} onClose={handleClose}>
+        <TalkSection personName={"Master Warrior"} text={"Hello brave adventurer! Are you ready to begin the training? <br />If you're willing to train, you'll receive an amount of GOLD as a reward!</p>"} />
+      </TalkModal>
+
     </div>
   );
 }
