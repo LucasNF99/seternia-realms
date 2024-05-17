@@ -2,7 +2,7 @@
 import React from 'react';
 
 const StepsMint = ({ currentStep }) => {
-  const steps = [' 1', ' 2', ' 3', ' 4']; // Define your steps here
+  const steps = [' 1', ' 2', ' 3']; // Define your steps here
 
   return (
     <div className="flex items-center mx-auto">

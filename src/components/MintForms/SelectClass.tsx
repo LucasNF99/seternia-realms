@@ -46,7 +46,7 @@ export function SelectClass() {
           <FormImageBg highlight={selectedClass == 'priest'} name={"Priest"} image={priest} cardW="200px" cardH="250px" />
         </button>
       </div>
-      <StepsMint currentStep={2} />
+      <StepsMint currentStep={1} />
     </form>
   );
 }

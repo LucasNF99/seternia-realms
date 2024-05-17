@@ -47,7 +47,7 @@ export function SelectFaction() {
           <FormImageBg highlight={selectedFaction == 'twilight'} name={"Twilight Brotherhood"} image={twilight} cardW="200px" cardH="250px" />
         </button>
       </div>
-      <StepsMint currentStep={4} />
+      <StepsMint currentStep={3} />
     </form>
   );
 }

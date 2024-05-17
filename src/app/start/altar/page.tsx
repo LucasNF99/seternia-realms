@@ -43,12 +43,10 @@ export default function MintPage() {
   const renderForm = () => {
     switch (currentStep) {
       case 0:
-        return <SelectGenre />;
-      case 1:
         return <SelectClass />;
-      case 2:
+      case 1:
         return <SelectRace />;
-      case 3:
+      case 2:
         return <SelectFaction />;
       default:
         return null;
@@ -60,15 +58,15 @@ export default function MintPage() {
     } else {
       try {
         const tx = await MintTx(
-          wallet, 
-          connection, 
+          wallet,
+          connection,
           new BN(1),
           new BN(1),
           new BN(1)
         );
-        if(tx){
+        if (tx) {
           handleClose()
-        }else{
+        } else {
           alert("Error in Mint NFT trasnaction")
         }
       } catch (error) {
@@ -86,14 +84,14 @@ export default function MintPage() {
           {currentStep > 0 && (
             <>
               <button className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center" onClick={handlePrev}><ArrowLeftIcon width={20} />Previous</button>
-              {currentStep == 3 && (
+              {currentStep == 2 && (
                 <button type="button" onClick={handleMint} className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center">
                   Mint your hero
                 </button>
               )}
             </>
           )}
-          {currentStep < 3 && (
+          {currentStep < 2 && (
             <button className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-main flex items-center" onClick={handleNext}>Next <ArrowRightIcon width={20} /></button>
           )}
         </div>

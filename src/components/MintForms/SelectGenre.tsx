@@ -35,7 +35,7 @@ export function SelectGenre() {
           <FormImageBg highlight={selectedGenre == 'female'} name={"Female"} image={female} imageW={120} />
         </button>
       </div>
-      <StepsMint currentStep={1} />
+      {/* <StepsMint currentStep={1} /> */}
     </form>
   );
 }
