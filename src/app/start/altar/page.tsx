@@ -43,9 +43,9 @@ export default function MintPage() {
   const renderForm = () => {
     switch (currentStep) {
       case 0:
-        return <SelectClass />;
-      case 1:
         return <SelectRace />;
+      case 1:
+        return <SelectClass />;
       case 2:
         return <SelectFaction />;
       default:

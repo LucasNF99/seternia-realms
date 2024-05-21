@@ -3,7 +3,7 @@ import sword from '@/../public/components/swordsmen.svg';
 import wizard from '@/../public/components/wizard.svg';
 import archer from '@/../public/components/archer.svg';
 import priest from '@/../public/components/priest.svg';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createNftAtom } from "@/presentation/atoms/createNftAtom";
 import { useRecoilState } from "recoil";
 import StepsMint from "./StepsMint";
@@ -19,6 +19,13 @@ export function SelectClass() {
       class: heroClass,
     })
   };
+
+  useEffect(() => {
+    console.log({
+      heroClassAt
+
+    })
+  }, [])
 
   return (
     <form className="flex justify-center flex-col items-center">
@@ -46,7 +53,7 @@ export function SelectClass() {
           <FormImageBg highlight={selectedClass == 'priest'} name={"Priest"} image={priest} cardW="200px" cardH="250px" />
         </button>
       </div>
-      <StepsMint currentStep={1} />
+      <StepsMint currentStep={2} />
     </form>
   );
 }

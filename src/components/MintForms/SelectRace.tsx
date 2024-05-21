@@ -45,7 +45,7 @@ export function SelectRace() {
           <FormImageBg highlight={selectedRace == 'bonk'} name={"Dog"} image={bonk} cardW="200px" cardH="250px" />
         </button>
       </div>
-      <StepsMint currentStep={2} />
+      <StepsMint currentStep={1} />
     </form>
   );
 }
