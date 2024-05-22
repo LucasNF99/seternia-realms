@@ -9,7 +9,7 @@ interface TimeLeft {
     seconds: number;
 }
 
-export function BonkRunes() {
+export function BonkRunesIntern() {
 
 
     const calculateTimeLeft = (): TimeLeft => {

@@ -42,7 +42,7 @@ export default function TrainingPage() {
       </BaseModal>
 
       <TalkModal bgColor={"bg-transparent"} border={false} isOpen={isOpen} onClose={handleClose}>
-        <TalkSection personName={"Master Warrior"} text={"Hello brave adventurer! Are you ready to begin the training? <br />If you're willing to train, you'll receive an amount of GOLD as a reward!</p>"} />
+        <TalkSection personName={"Master Warrior"} text={"Hello brave adventurer! Are you ready to begin the training? If you're willing to train, you'll receive an amount of GOLD as a reward!"} />
       </TalkModal>
 
     </div>

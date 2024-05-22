@@ -10,7 +10,7 @@ import { useRecoilState } from "recoil";
 import { TrainingCamp } from "@/components/MintForms/TrainingCamp";
 import { TalkModal } from "@/components/TalkModal";
 import { TalkSection } from "@/components/TalkSection";
-import { BonkRunes } from "@/components/MintForms/BonkRunes";
+import { BonkRunesIntern } from "@/components/BonkRuins/BonkRunesIntern";
 
 export default function Bonk() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ export default function Bonk() {
   const renderForm = () => {
     switch (currentStep) {
       case 0:
-        return <BonkRunes />;
+        return <BonkRunesIntern />;
       default:
         return null;
     }

@@ -20,7 +20,7 @@ export function Accordion({ title, children }: AccordionProps) {
         isOpen ? '' : 'hover:scale-105')}
 
     >
-      <button
+      <div
         onClick={toggleAccordion}
         className="w-full text-left py-2 px-4 "
       >
@@ -40,7 +40,7 @@ export function Accordion({ title, children }: AccordionProps) {
             />
           </svg>
         </div>
-      </button>
+      </div>
       {isOpen && (
         <div className="px-4 pb-4">
           {children}
