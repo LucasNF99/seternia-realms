@@ -29,10 +29,9 @@ export default function Home() {
     <main
       className="
         bg-[url('/institutional/bg-lp.png')] 
-        bg-cover bg-center min-h-screen flex flex-col justify-center 
+        bg-cover bg-bottom min-h-screen flex flex-col justify-center 
         items-center
         gap-20
-        pt-24
         px-6
         transition-all
       "

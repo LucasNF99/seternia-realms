@@ -6,8 +6,6 @@ import menubtn from '@/../public/components/menu-icon.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Cog8ToothIcon, Squares2X2Icon, UserCircleIcon } from '@heroicons/react/16/solid';
-import { useGetWalletId } from '@/presentation/hook/useGetWalletId';
-import { createSignOutUsecase } from '@/factories/createSignOutUsecase';
 import { useRouter } from "next/navigation";
 import { Pages } from '@/presentation/enums/pages';
 import { useAnchorWallet, useWallet } from '@solana/wallet-adapter-react';
@@ -37,7 +35,6 @@ const links = [
   },
 ]
 
-const logoff = createSignOutUsecase();
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,16 +53,6 @@ export function Header() {
     console.log({ walletInfo, teste });
   }, [teste, walletInfo])
 
-  async function disconnect() {
-    await logoff.execute();
-    router.push(Pages.HOME)
-    return;
-  }
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    setWallet(useGetWalletId());
-  }, [])
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -81,7 +68,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className='w-full flex justify-between p-6'>
+    <header className='w-full flex justify-between p-4'>
       <Profile />
       <div className='relative transition-all flex space-x-2 items-center'>
         <button className='hover:scale-95' type='button' onClick={() => setIsOpen(!isOpen)}>

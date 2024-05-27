@@ -22,8 +22,6 @@ const spectral = Spectral({
 
 });
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{

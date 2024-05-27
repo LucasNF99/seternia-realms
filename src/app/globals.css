@@ -32,7 +32,17 @@ button, a{
   cursor: url('/components/pointer.png'), auto;
 }
 
+.border-gradient.bg-main {
+  --bg-color: #261708;
+}
 
+.border-gradient {
+  --bg-color: black; /* Define a cor de fundo padrão. Você pode mudar isso conforme necessário. */
+  border: 2px solid transparent; /* Define a largura da borda e a cor transparente */
+  background-image: linear-gradient(var(--bg-color), var(--bg-color)), linear-gradient(to right, #EB8C2A, #754515); /* Duas imagens de fundo: uma sólida e uma gradiente */
+  background-origin: border-box; /* Define a origem do fundo */
+  background-clip: padding-box, border-box; /* Clipa a borda com o fundo */
+}
 
 @layer utilities {
   .text-balance {
@@ -64,8 +74,11 @@ button, a{
 }
 
 .wallet-adapter-button-trigger {
-    background-color: #6B3C24;
-    border: 2px solid #ACADB2;
+  background-color: #261708;
+  border: 2px solid transparent; /* Define a largura da borda e a cor transparente */
+  background-image: linear-gradient(#261708, #261708), linear-gradient(to right, #EB8C2A, #754515); /* Duas imagens de fundo: uma sólida e uma gradiente */
+  background-origin: border-box; /* Define a origem do fundo */
+  background-clip: padding-box, border-box; 
 }
 
 .wallet-adapter-button:not([disabled]):focus-visible {

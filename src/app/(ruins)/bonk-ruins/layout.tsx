@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { usePathname, useRouter } from "next/navigation";
 import { RecoilRoot } from "recoil";
-export default function InGameLayout({
+export default function InRuinsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -19,11 +19,15 @@ export default function InGameLayout({
 
   return (
     <RecoilRoot>
-      <div className="flex bg-gradient-to-t from-black via-purple-900 to-purple-950  flex-col min-h-screen items-center w-full ">
+      <div
+        className="bg-cover text-white flex flex-col min-h-screen bg-center"
+        style={{
+          backgroundImage: shouldChangeBackground
+            ? 'url(/components/training_img.jpg)'
+            : (runeBg ? 'url(/components/altar-bg.svg)' : (altar ? 'url(/components/altar-bg.png)' : 'url(/components/map-bg.png)'))
+        }}>
         <Header />
-        <div className="border-4 border-gradient bg-black   flex-grow w-full max-w-screen-lg">
-          {children}
-        </div>
+        <div className="flex-grow">{children}</div>
         <Footer />
       </div>
     </RecoilRoot>
