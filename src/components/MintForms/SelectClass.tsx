@@ -44,13 +44,13 @@ export function SelectClass() {
 
         // onClick={() => handleSelectClass("archer")}
         >
-          <FormImageBg highlight={selectedClass == 'archer'} name={"Archer"} image={archer} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedClass == 'archer'} name={"Archer"} image={archer} />
         </button>
         <button type="button"
 
         // onClick={() => handleSelectClass("priest")}
         >
-          <FormImageBg highlight={selectedClass == 'priest'} name={"Priest"} image={priest} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedClass == 'priest'} name={"Priest"} image={priest} />
         </button>
       </div>
       <StepsMint currentStep={2} />

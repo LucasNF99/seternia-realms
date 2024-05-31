@@ -15,8 +15,8 @@ export default function InRuinsLayout({
   // };
   const pathname = usePathname();
   const shouldChangeBackground = pathname.includes("/start/training");
-  const runeBg = pathname.includes("/start/mint-rune");
-  const altar = pathname.includes("/start/altar");
+  const runeBg = pathname.includes("/mint/mint-rune");
+  const altar = pathname.includes("/mint/altar");
 
   return (
     <RecoilRoot>
@@ -25,7 +25,7 @@ export default function InRuinsLayout({
         style={{
           backgroundImage: shouldChangeBackground
             ? 'url(/components/training_img.jpg)'
-            : (runeBg ? 'url(/components/altar-bg.svg)' : (altar ? 'url(/components/altar-bg.png)' : 'url(/components/map-bg.png)'))
+            : (runeBg ? 'url(/maps/altar-bg.png)' : (altar ? 'url(/maps/steps-bg.png)' : 'url(/components/map-bg.png)'))
         }}>
         <Header />
         <div className="flex-grow">{children}</div>

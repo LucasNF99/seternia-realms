@@ -1,6 +1,7 @@
 "use client";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { QuickSelectModal } from "@/components/QuickSelectModal";
 import { usePathname, useRouter } from "next/navigation";
 import { RecoilRoot } from "recoil";
 export default function InGameLayout({
@@ -26,6 +27,7 @@ export default function InGameLayout({
         </div>
         <Footer />
       </div>
+      <QuickSelectModal />
     </RecoilRoot>
   );
 }

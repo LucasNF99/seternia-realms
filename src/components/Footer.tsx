@@ -2,11 +2,10 @@
 
 import Image from 'next/image';
 import React, { useState, useRef } from 'react';
-import mutedImg from '@/../public/components/muted.svg';
+import mutedImg from '@/../public/components/buttons/sound-off.svg';
 import unmutedImg from '@/../public/components/soundon.svg';
-import inventory from '@/../public/components/Inventory.svg';
-import heroes from '@/../public/components/heroes.svg';
-import ranking from '@/../public/components/ranking.svg';
+import inventory from '@/../public/components/buttons/inventory-icon.svg';
+import ranking from '@/../public/components/buttons/ranking-icon.svg';
 
 export function Footer() {
 
@@ -34,13 +33,10 @@ export function Footer() {
         Your browser does not support the audio element.
       </audio>
       <div className='flex justify-center items-center gap-4'>
-        <button type='button' className='hover:scale-105'>
+        <button type='button' className='hover:scale-105 transition-all'>
           <Image src={inventory} alt={'Inventory'} width={75} />
         </button>
-        <button type='button' className='hover:scale-105'>
-          <Image src={heroes} alt={'Heroes'} width={75} />
-        </button>
-        <button type='button' className='hover:scale-105'>
+        <button type='button' className='hover:scale-105 transition-all'>
           <Image src={ranking} alt={'Ranking'} width={75} />
         </button>
       </div>

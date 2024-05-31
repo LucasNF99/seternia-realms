@@ -35,6 +35,10 @@ button, a{
 .border-gradient.bg-main {
   --bg-color: #261708;
 }
+.border-gradient.bg-tertiary {
+  --bg-color: #754515;
+}
+
 
 .border-gradient {
   --bg-color: black; /* Define a cor de fundo padrão. Você pode mudar isso conforme necessário. */

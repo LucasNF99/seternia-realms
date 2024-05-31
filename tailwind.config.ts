@@ -10,7 +10,10 @@ const config: Config = {
     extend: {
       colors: {
         main: '#261708',
-        silver: '#ACADB2'
+        silver: '#ACADB2',
+        secondary: '#EB8C2A',
+        tertiary: '#754515',
+        yell: '#FFE663'
       },
       backgroundImage: {
         'connect-wl-pattern': "url('/img/hero-pattern.svg')",

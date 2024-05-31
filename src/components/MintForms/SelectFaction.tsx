@@ -35,16 +35,16 @@ export function SelectFaction() {
       <h2 className="text-2xl text-center">Select your faction</h2>
       <div className="w-full my-5 gap-1  lg:gap-8 lg:my-10 grid grid-cols-2 lg:grid-cols-4">
         <button type="button" onClick={() => handleSelectFac("flame")}>
-          <FormImageBg highlight={selectedFaction == 'flame'} name={"Silver Flame"} image={flame} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedFaction == 'flame'} name={"Silver Flame"} image={flame} />
         </button>
         <button type="button" onClick={() => handleSelectFac("light")}>
-          <FormImageBg highlight={selectedFaction == 'light'} name={"Order of Light"} image={light} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedFaction == 'light'} name={"Order of Light"} image={light} />
         </button>
         <button type="button" onClick={() => handleSelectFac("arcane")}>
-          <FormImageBg highlight={selectedFaction == 'arcane'} name={"Arcane Circle"} image={arcane} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedFaction == 'arcane'} name={"Arcane Circle"} image={arcane} />
         </button>
         <button type="button" onClick={() => handleSelectFac("twilight")}>
-          <FormImageBg highlight={selectedFaction == 'twilight'} name={"Twilight Brotherhood"} image={twilight} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedFaction == 'twilight'} name={"Twilight Brotherhood"} image={twilight} />
         </button>
       </div>
       <StepsMint currentStep={3} />

@@ -26,23 +26,23 @@ export function SelectRace() {
       <h2 className="text-2xl text-center">Select your race</h2>
       <div className="w-full my-5 gap-1  lg:gap-8 lg:my-10 grid grid-cols-2 lg:grid-cols-3">
         <button type="button" onClick={() => handleSelectRace("human")}>
-          <FormImageBg highlight={selectedRace == 'human'} name={"Human"} image={human} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedRace == 'human'} name={"Human"} image={human} />
         </button>
         <button type="button"
 
         // onClick={() => handleSelectRace("cat")}
         >
-          <FormImageBg highlight={selectedRace == 'cat'} name={"Cat"} image={cat} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedRace == 'cat'} name={"Cat"} image={cat} />
         </button>
         {/* <button type="button"
         >
-          <FormImageBg highlight={selectedRace == 'pepe'} name={"Pepe"} image={pepe} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedRace == 'pepe'} name={"Pepe"} image={pepe} />
         </button> */}
         <button type="button"
 
         // onClick={() => handleSelectRace("bonk")}
         >
-          <FormImageBg highlight={selectedRace == 'bonk'} name={"Dog"} image={bonk} cardW="200px" cardH="250px" />
+          <FormImageBg highlight={selectedRace == 'bonk'} name={"Dog"} image={bonk} />
         </button>
       </div>
       <StepsMint currentStep={1} />
