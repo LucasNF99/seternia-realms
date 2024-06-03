@@ -83,16 +83,16 @@ export default function MintPage() {
         <div className="flex justify-center gap-6 mt-4">
           {currentStep > 0 && (
             <>
-              <button className="p-4 border-gradient w-56 gap-2 justify-center border-2 silver rounded-lg bg-tertiary flex items-center" onClick={handlePrev}><ArrowLeftIcon width={20} />Previous</button>
+              <button className="p-4 border-gradient w-56 gap-2 justify-center border-2 silver rounded-lg bg-brown flex items-center" onClick={handlePrev}><ArrowLeftIcon width={20} />Previous</button>
               {currentStep == 2 && (
-                <button type="button" onClick={handleMint} className="p-4 w-56 border-gradient gap-2 justify-center border-2 silver rounded-lg bg-tertiary flex items-center">
+                <button type="button" onClick={handleMint} className="p-4 w-56 border-gradient gap-2 justify-center border-2 silver rounded-lg bg-brown flex items-center">
                   Mint your hero
                 </button>
               )}
             </>
           )}
           {currentStep < 2 && (
-            <button className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-tertiary border-gradient flex items-center" onClick={handleNext}>Next <ArrowRightIcon width={20} /></button>
+            <button className="p-4 w-56 gap-2 justify-center border-2 silver rounded-lg bg-brown border-gradient flex items-center" onClick={handleNext}>Next <ArrowRightIcon width={20} /></button>
           )}
         </div>
       </BaseModal>

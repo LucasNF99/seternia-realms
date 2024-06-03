@@ -3,7 +3,10 @@ import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapte
 import { SMintTx } from "../../../contract/transaction";
 import { useRouter } from 'next/navigation'
 import rune from '@/../public/components/rune.gif';
+import mint from '@/../public/components/buttons/mint-button.svg';
 import Image from "next/image";
+import Link from "next/link";
+import { Pages } from "@/presentation/enums/pages";
 
 export default function QuickSelect() {
   const router = useRouter();
@@ -21,18 +24,18 @@ export default function QuickSelect() {
       if (tx) {
         router.push('/mint/altar')
       } else {
-        alert("Error in Mint NFT trasnaction")
+        alert("Error in Mint NFT transaction")
       }
     } catch (error) {
       console.log("Input incorrect")
     }
   }
   return (
-    <div>
-      <Image className=" rounded-lg mb-2 mx-auto" width={350} src={rune} alt="Rune" />
-      <button onClick={simple_mint} className="p-4 border-gradient mx-auto transition-all my-4 hover:scale-105 w-56 gap-2 justify-center border-2 silver rounded-lg bg-tertiary flex items-center">
-        Mint
-      </button>
+    <div className="flex items-center flex-col justify-center">
+      <Link href={Pages.STEPS}>
+        <Image className="" alt="Mint Hero" src={mint} />
+      </Link>
+      <Image className=" rounded-lg mb-2 " width={350} src={rune} alt="Rune" />
     </div>
   );
 }

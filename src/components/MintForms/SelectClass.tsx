@@ -1,5 +1,6 @@
 import { FormImageBg } from "../FormImageBg";
 import sword from '@/../public/components/swordsmen.svg';
+import swordBonk from '@/../public/components/bonk-icon.svg';
 import wizard from '@/../public/components/wizard.svg';
 import archer from '@/../public/components/archer.svg';
 import priest from '@/../public/components/priest.svg';
@@ -19,20 +20,12 @@ export function SelectClass() {
       class: heroClass,
     })
   };
-
-  useEffect(() => {
-    console.log({
-      heroClassAt
-
-    })
-  }, [])
-
   return (
     <form className="flex justify-center flex-col items-center">
       <h2 className="text-2xl text-center">Select your class</h2>
       <div className="w-full my-5 gap-1  lg:gap-8 lg:my-10 grid grid-cols-2 lg:grid-cols-4">
         <button type="button" onClick={() => handleSelectClass("swordsman")}>
-          <FormImageBg highlight={selectedClass == 'swordsman'} name={"Swordsman"} image={sword} />
+          <FormImageBg highlight={selectedClass == 'swordsman'} name={"Swordsman"} image={heroClassAt.race == 'bonk' ? swordBonk : sword} />
         </button>
         <button type="button"
 

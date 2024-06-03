@@ -25,7 +25,7 @@ export default function InRuinsLayout({
         style={{
           backgroundImage: shouldChangeBackground
             ? 'url(/components/training_img.jpg)'
-            : (runeBg ? 'url(/maps/altar-bg.png)' : (altar ? 'url(/maps/steps-bg.png)' : 'url(/components/map-bg.png)'))
+            : (runeBg ? 'url(/maps/altar-bg.png)' : (altar ? 'url(/maps/altar-bg.png)' : 'url(/components/map-bg.png)'))
         }}>
         <Header />
         <div className="flex-grow">{children}</div>
