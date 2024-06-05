@@ -78,7 +78,7 @@ export default function MintPage() {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <BaseModal isOpen={isOpen} onClose={handleClose}>
+      <BaseModal wSize={930} wHeight={600} isOpen={isOpen} onClose={handleClose}>
         {renderForm()}
         <div className="flex justify-center gap-6 mt-4">
           {currentStep > 0 && (
