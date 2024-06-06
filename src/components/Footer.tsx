@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React, { useState, useRef } from 'react';
 import mutedImg from '@/../public/components/buttons/sound-off.svg';
-import unmutedImg from '@/../public/components/soundon.svg';
+import unmutedImg from '@/../public/components/buttons/sound-on.svg';
 import inventory from '@/../public/components/buttons/inventory-icon.svg';
 import ranking from '@/../public/components/buttons/ranking-icon.svg';
 

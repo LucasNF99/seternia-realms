@@ -46,10 +46,10 @@ export function BonkRunesIntern() {
 
     return (
         <form className="mt-4 flex flex-row space-x-8 w-full justify-start items-start px-16">
-            <div className="bg-[#DEC58D] p-8 rounded-lg">
-                <h2 className="text-2xl text-center text-main font-bold">BONK RUINS</h2>
+            <div className="bg-main p-8 rounded-lg">
+                <h2 className="text-2xl text-center text-white font-bold">BONK RUINS</h2>
 
-                <div className="flex text-center flex-col text-main">
+                <div className="flex text-center flex-col text-white">
                     <h3 className="text-2xl font-bold my-2">4.597.545 BONK</h3>
                     <p>prize in this expedition</p>
                     <h3 className="text-2xl font-bold my-2">7 Days</h3>
@@ -81,7 +81,7 @@ export function BonkRunesIntern() {
             </div>
 
 
-            <div className="bg-[#DEC58D] text-main rounded-lg py-4 px-10 min-w-[410px]">
+            <div className="bg-main text-white rounded-lg py-4 px-10 min-w-[410px]">
                 <h2 className="text-2xl text-start font-semibold">Select your Hero</h2>
                 <button className="button text-white bg-main pr-2 pl-2 rounded-lg w-auto text-4xl mt-2">
                     +

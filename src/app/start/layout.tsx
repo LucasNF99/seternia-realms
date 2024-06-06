@@ -20,7 +20,7 @@ export default function InGameLayout({
 
   return (
     <RecoilRoot>
-      <div className="flex bg-gradient-to-t from-black via-purple-900 to-purple-950  flex-col min-h-screen items-center w-full ">
+      <div className="flex bg-[#161128] from-black  flex-col min-h-screen items-center w-full ">
         <Header />
         <div className="border-4 border-gradient bg-black   flex-grow w-full max-w-screen-lg">
           {children}

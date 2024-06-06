@@ -80,6 +80,10 @@ export function Header() {
             { hidden: !isOpen }
           )}
         >
+          <li onClick={handleLocationsClick} className="flex items-center gap-1 my-1 cursor-pointer">
+            <Squares2X2Icon width={18} />
+            Locations
+          </li>
           {links.map((item) => (
             <li key={item.text} onClick={() => setIsOpen(false)}>
               <Link className="flex items-center gap-1 my-1" href={item.url}>
@@ -88,10 +92,7 @@ export function Header() {
               </Link>
             </li>
           ))}
-          <li onClick={handleLocationsClick} className="flex items-center gap-1 my-1 cursor-pointer">
-            <Squares2X2Icon width={18} />
-            Locations
-          </li>
+
         </ul>
         <WalletMultiButton />
       </div>
