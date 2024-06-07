@@ -12,7 +12,7 @@ export default function InRuinsLayout({
   return (
     <RecoilRoot>
       <div
-        className="bg-cover text-white flex flex-col min-h-screen bg-center"
+        className="bg-cover text-white items-center flex flex-col min-h-screen bg-center"
         style={{
           backgroundImage: 'url(/maps/bonk-ruinsBg.png)'
         }}>

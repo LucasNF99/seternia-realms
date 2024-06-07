@@ -1,7 +1,17 @@
+"use client";
+import map from "@/../public/maps/bg-main.png";
+import Image from "next/image";
+
 export default function Map() {
   return (
-    <div className="flex justify-center items-center min-h-screen w-full">
-      <h1 className="text-5xl rounded-lg p-4 bg-main text-center">Soon...</h1>
+    <div className="relative w-full h-[680px]">
+      <Image
+        src={map}
+        alt={"map"}
+        layout="fill"
+        objectFit="cover"
+        className="absolute inset-0"
+      />
     </div>
   );
 }

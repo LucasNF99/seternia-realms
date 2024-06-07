@@ -63,7 +63,7 @@ export function Header() {
   }
 
   return (
-    <header className="w-full flex justify-between p-4">
+    <header className="w-full max-w-screen-xl flex justify-between py-4">
       <Profile />
       <div className="relative transition-all flex space-x-2 items-center">
         <button
@@ -76,7 +76,7 @@ export function Header() {
         <ul
           ref={menuRef}
           className={classNames(
-            'bg-main border-silver border-2 divide-y p-4 transition-all absolute top-0 -left-24',
+            'bg-main border-silver border-2 z-10 divide-y p-4 transition-all absolute top-0 -left-24',
             { hidden: !isOpen }
           )}
         >

@@ -21,7 +21,7 @@ export default function InRuinsLayout({
   return (
     <RecoilRoot>
       <div
-        className="bg-cover text-white flex flex-col min-h-screen bg-center"
+        className="bg-cover text-white flex items-center flex-col min-h-screen bg-center"
         style={{
           backgroundImage: shouldChangeBackground
             ? 'url(/components/training_img.jpg)'
