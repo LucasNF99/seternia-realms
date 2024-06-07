@@ -34,7 +34,7 @@ export function FormImageBg({
       <article className={classNames(`bg-brown lg:w-[200px] h-[250px] transition-all p-6 flex justify-center items-center rounded-lg hover:scale-105 hover:outline outline-yell`, highlight ? 'scale-105 outline outline-yell' : '')}>
         <Image src={image} alt={name} width={imageW} height={imageH} />
       </article>
-      <p className="mt-2 text-center">
+      <p className="mt-4 text-center">
         {name}
       </p>
       {coinIcon && (
