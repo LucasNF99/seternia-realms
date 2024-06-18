@@ -43,6 +43,17 @@ button, a{
   --bg-color: #6B3C24;
 }
 
+/* Ocultar as setas nos inputs de número */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 
 .border-gradient {
   --bg-color: black; /* Define a cor de fundo padrão. Você pode mudar isso conforme necessário. */

@@ -2,12 +2,6 @@
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from 'next/navigation'
 import { BaseModal } from "@/components/BaseModal";
-import { SelectClass } from "@/components/MintForms/SelectClass";
-import { SelectRace } from "@/components/MintForms/SelectRace";
-import { SelectFaction } from "@/components/MintForms/SelectFaction";
-import { createNftAtom } from "@/presentation/atoms/createNftAtom";
-import { useRecoilState } from "recoil";
-import { TrainingCamp } from "@/components/MintForms/TrainingCamp";
 import { TalkModal } from "@/components/TalkModal";
 import { TalkSection } from "@/components/TalkSection";
 import { BonkRunesIntern } from "@/components/BonkRuins/BonkRunesIntern";
