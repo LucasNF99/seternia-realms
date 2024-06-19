@@ -29,14 +29,14 @@ export default function Home() {
     <main
       className="
         bg-[url('/institutional/bg-lp.png')] 
-        bg-cover bg-bottom min-h-screen flex flex-col justify-center 
+        bg-cover bg-bottom min-h-screen flex flex-col
         items-center
         gap-20
         px-6
         transition-all
       "
     >
-      <Image width={400} src={Logo} alt="Seternia realms" />
+      <Image width={662} src={Logo} className="mt-10" alt="Seternia realms" />
       <WalletMultiButton />
     </main>
   );
