@@ -16,6 +16,9 @@ const config: Config = {
         yell: '#FFE663',
         brown: '#6B3C24'
       },
+      rotate: {
+        '360': '360deg',
+      },
       backgroundImage: {
         'connect-wl-pattern': "url('/img/hero-pattern.svg')",
         "gradient-conic":
