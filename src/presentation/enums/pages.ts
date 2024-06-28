@@ -6,4 +6,6 @@ export enum Pages {
     BONK_RUINS_DEPOSIT = "/bonk-ruins/deposit",
     MINT_RUNE = "/mint/mint-rune",
     STEPS = "/mint/altar",
+    SWAP = "/swap",
+    TOWN_HALL = "/town-hall",
 }

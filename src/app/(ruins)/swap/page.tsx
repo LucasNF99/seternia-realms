@@ -10,7 +10,7 @@ import bonkIcon from '@/../public/components/bonk-icon.svg';
 import swapIcon from '@/../public/components/swap-icon.svg';
 import Image from "next/image";
 
-export default function Bonk() {
+export default function Swap() {
   const [isInverted, setIsInverted] = useState(false);
 
   const handleClick = () => {

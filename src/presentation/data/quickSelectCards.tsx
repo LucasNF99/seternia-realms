@@ -15,7 +15,7 @@ import bonkBg from "@/../public/components/quickselect/bonk-ruins.svg";
 
 export const cardsData = [
   {
-    direction: '#',
+    direction: Pages.TOWN_HALL,
     alt: 'Town Hall',
     buttonImg: townHall,
     locationImage: townHallBg,
