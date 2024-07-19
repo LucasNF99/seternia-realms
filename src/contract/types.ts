@@ -67,7 +67,6 @@ export type ClassList = {
 }
 
 export type SimpleMintNFTArgs = {
-    id:BN,
     bump:number
   }
   export type MintNFTArgs = {

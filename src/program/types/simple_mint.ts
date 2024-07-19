@@ -21,7 +21,12 @@ export type SimpleMint = {
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "supply",
+          "type": "u64"
+        }
+      ]
     },
     {
       "name": "mintCollection",
@@ -175,10 +180,6 @@ export type SimpleMint = {
       ],
       "args": [
         {
-          "name": "id",
-          "type": "u64"
-        },
-        {
           "name": "bump",
           "type": "u8"
         }
@@ -194,6 +195,10 @@ export type SimpleMint = {
           {
             "name": "admin",
             "type": "publicKey"
+          },
+          {
+            "name": "supply",
+            "type": "u64"
           },
           {
             "name": "mints",
@@ -231,8 +236,8 @@ export type SimpleMint = {
     },
     {
       "code": 6005,
-      "name": "IncorrectAmount",
-      "msg": "Incorrect Amount."
+      "name": "IncorrectSupply",
+      "msg": "Mint Amount Exceeded Supply"
     },
     {
       "code": 6006,
@@ -310,7 +315,12 @@ export const IDL: SimpleMint = {
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "supply",
+          "type": "u64"
+        }
+      ]
     },
     {
       "name": "mintCollection",
@@ -464,10 +474,6 @@ export const IDL: SimpleMint = {
       ],
       "args": [
         {
-          "name": "id",
-          "type": "u64"
-        },
-        {
           "name": "bump",
           "type": "u8"
         }
@@ -483,6 +489,10 @@ export const IDL: SimpleMint = {
           {
             "name": "admin",
             "type": "publicKey"
+          },
+          {
+            "name": "supply",
+            "type": "u64"
           },
           {
             "name": "mints",
@@ -520,8 +530,8 @@ export const IDL: SimpleMint = {
     },
     {
       "code": 6005,
-      "name": "IncorrectAmount",
-      "msg": "Incorrect Amount."
+      "name": "IncorrectSupply",
+      "msg": "Mint Amount Exceeded Supply"
     },
     {
       "code": 6006,

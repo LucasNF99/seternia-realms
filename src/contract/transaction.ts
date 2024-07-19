@@ -6,6 +6,7 @@ import { Faction, Race, Treasure, STreasure } from "./types"
 import { active,mint,smint,getProgram, getProgramS } from "./instructions";;
 import { Metaplex, walletAdapterIdentity } from "@metaplex-foundation/js"
 import BN from "bn.js";
+import * as anchor from '@project-serum/anchor';
 import { useSnackbar } from "@/presentation/hook/useSnackbar";
  import { toast } from 'react-toastify';
 import Link from "next/link";
@@ -270,37 +271,173 @@ export const MintTx = async (
       }
   return pass
 }
-export const SMintTx = async (
-  wallet: AnchorWallet,
-  connection: Connection,
-) => {
-  var pass = false;
-  // check the connection
-  if (!wallet.publicKey || !connection) {
-    console.log("Warning: Wallet not connected")
-    return
+
+// export const SMintTx = async (
+//   wallet: AnchorWallet,
+//   connection: Connection,
+// ) => {
+//   var pass = false;
+//   // check the connection
+//   if (!wallet.publicKey || !connection) {
+//     console.log("Warning: Wallet not connected")
+//     return
+//   }
+//   // set Provider
+//   const provider = new AnchorProvider(connection,wallet,{});
+//   setProvider(provider)
+//   const program = await getProgramS(provider);
+
+//   const [TreasuryKey,bump] = await PublicKey.findProgramAddress(
+//     [Buffer.from("TRESURE_SEED")],
+//     program.programId
+//   );
+//   const treasury_data = await program.account.treasure.fetch(TreasuryKey) as STreasure;
+//   const id = treasury_data.mints.add(new BN(1));
+
+//   const [CollectionKey] = await PublicKey.findProgramAddress(
+//     [Buffer.from("collection")],
+//     program.programId
+//   );
+//   const [CmetadataAddress] = await PublicKey.findProgramAddress(
+//     [Buffer.from("metadata"),info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),CollectionKey.toBuffer()],
+//     info.TOKEN_METADATA_PROGRAM_ID
+//   );
+//   const [CmasterEdition] = await PublicKey.findProgramAddress(
+//     [
+//       Buffer.from("metadata"),
+//       info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),
+//       CollectionKey.toBuffer(),
+//       Buffer.from("edition")
+//     ],
+//     info.TOKEN_METADATA_PROGRAM_ID
+//   );
+
+//   const [MintKey] = await PublicKey.findProgramAddress(
+//     [Buffer.from("mint"),Buffer.from(id.toArray("le", 8))],
+//     program.programId
+//   );
+//   const [metadataAddress] = await PublicKey.findProgramAddress(
+//     [Buffer.from("metadata"),info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),MintKey.toBuffer()],
+//     info.TOKEN_METADATA_PROGRAM_ID
+//   );
+//   const [masterEdition] = await PublicKey.findProgramAddress(
+//     [
+//       Buffer.from("metadata"),
+//       info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),
+//       MintKey.toBuffer(),
+//       Buffer.from("edition")
+//     ],
+//     info.TOKEN_METADATA_PROGRAM_ID
+//   );
+//   const [delegate] = await PublicKey.findProgramAddress(
+//     [
+//       Buffer.from("metadata"),
+//       info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),
+//       CollectionKey.toBuffer(),
+//       Buffer.from("collection_authority"),
+//       TreasuryKey.toBuffer()
+//     ],
+//     info.TOKEN_METADATA_PROGRAM_ID
+//   );
+//   const MintTokenAccount = await getAssociatedTokenAddress(
+//     MintKey,
+//     wallet.publicKey
+//   );
+//   try {
+//     const tx = new Transaction()
+//     const mint_ix = await smint(
+//       { id,bump },
+//       {
+//         payer:wallet.publicKey,
+//         treasure:TreasuryKey,
+//         mint:MintKey,
+//         collectionMint:CollectionKey,
+//         tokenAccount:MintTokenAccount,
+//         masterEditionAccount:masterEdition,
+//         collectionMasterEdition:CmasterEdition,
+//         nftMetadata:metadataAddress,
+//         collectionMetadata:CmetadataAddress,
+//         delegate:delegate,
+//         associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+//         rent: SYSVAR_RENT_PUBKEY,
+//         systemProgram: SystemProgram.programId,
+//         tokenProgram: TOKEN_PROGRAM_ID,
+//         metadataProgram: info.TOKEN_METADATA_PROGRAM_ID,
+//       },
+//       provider
+//     );
+//     let cump_limit = ComputeBudgetProgram.setComputeUnitLimit({ units: 800_000 });
+//     tx.add(mint_ix).add(cump_limit);
+//     try {
+//       tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
+//       tx.feePayer = wallet.publicKey
+//       if (wallet.signTransaction) {
+//         const signedTx = await wallet.signTransaction(tx)
+//         const sTx = signedTx.serialize()
+//         const signature = await connection.sendRawTransaction(sTx, { skipPreflight: false })
+
+//         const blockhash = await connection.getLatestBlockhash()
+//         await connection.confirmTransaction({
+//           signature,
+//           blockhash: blockhash.blockhash,
+//           lastValidBlockHeight: blockhash.lastValidBlockHeight
+//         }, "processed");
+//         pass = true;
+//           // alert(`Successfully Mint NFT.\n Signature: ${signature}`)
+//             enqueueSnackbar(`TX: ${signature}`,{variant: "success"});
+
+//         console.log({
+//           signature,
+//           blockhash,
+//         });
+//       }
+//     } catch (error) {
+//       console.log("Error in Mint NFT trasnaction", error)
+//     }
+//   } catch (error) {
+//     console.log("NFT address is incorrect", error)
+//   }
+//   return pass
+// }
+
+
+
+export const MintUsingBlink  = async (payerPublicKey: PublicKey, connection: Connection) => {
+  if (!payerPublicKey || !connection) {
+    console.log("Warning: Public key not provided or connection not established");
+    return { success: false, error: "Public key or connection missing" };
   }
-  // set Provider
-  const provider = new AnchorProvider(connection,wallet,{});
-  setProvider(provider)
+
+  const dummyWallet = {
+      publicKey: payerPublicKey,
+      signTransaction: () =>
+          Promise.reject(new Error("Dummy wallet can't sign")),
+      signAllTransactions: () =>
+          Promise.reject(new Error("Dummy wallet can't sign")),
+  };
+
+
+  const provider = new AnchorProvider(
+      connection,
+      dummyWallet,
+      { skipPreflight: true, maxRetries: 0 },
+  );
   const program = await getProgramS(provider);
 
-  const [TreasuryKey,bump] = await PublicKey.findProgramAddress(
+  const [TreasuryKey, bump] = await PublicKey.findProgramAddressSync(
     [Buffer.from("TRESURE_SEED")],
     program.programId
   );
-  const treasury_data = await program.account.treasure.fetch(TreasuryKey) as STreasure;
-  const id = treasury_data.mints.add(new BN(1));
 
-  const [CollectionKey] = await PublicKey.findProgramAddress(
+  const [CollectionKey] = await PublicKey.findProgramAddressSync(
     [Buffer.from("collection")],
     program.programId
   );
-  const [CmetadataAddress] = await PublicKey.findProgramAddress(
-    [Buffer.from("metadata"),info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),CollectionKey.toBuffer()],
+  const [CmetadataAddress] = await PublicKey.findProgramAddressSync(
+    [Buffer.from("metadata"), info.TOKEN_METADATA_PROGRAM_ID.toBuffer(), CollectionKey.toBuffer()],
     info.TOKEN_METADATA_PROGRAM_ID
   );
-  const [CmasterEdition] = await PublicKey.findProgramAddress(
+  const [CmasterEdition] = await PublicKey.findProgramAddressSync(
     [
       Buffer.from("metadata"),
       info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),
@@ -310,15 +447,16 @@ export const SMintTx = async (
     info.TOKEN_METADATA_PROGRAM_ID
   );
 
-  const [MintKey] = await PublicKey.findProgramAddress(
-    [Buffer.from("mint"),Buffer.from(id.toArray("le", 8))],
+  const [MintKey] = await anchor.web3.PublicKey.findProgramAddressSync(
+    [Buffer.from("mint"), payerPublicKey.toBuffer()],
     program.programId
   );
-  const [metadataAddress] = await PublicKey.findProgramAddress(
-    [Buffer.from("metadata"),info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),MintKey.toBuffer()],
+
+  const [metadataAddress] = await PublicKey.findProgramAddressSync(
+    [Buffer.from("metadata"), info.TOKEN_METADATA_PROGRAM_ID.toBuffer(), MintKey.toBuffer()],
     info.TOKEN_METADATA_PROGRAM_ID
   );
-  const [masterEdition] = await PublicKey.findProgramAddress(
+  const [masterEdition] = await PublicKey.findProgramAddressSync(
     [
       Buffer.from("metadata"),
       info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),
@@ -327,7 +465,7 @@ export const SMintTx = async (
     ],
     info.TOKEN_METADATA_PROGRAM_ID
   );
-  const [delegate] = await PublicKey.findProgramAddress(
+  const [delegate] = await PublicKey.findProgramAddressSync(
     [
       Buffer.from("metadata"),
       info.TOKEN_METADATA_PROGRAM_ID.toBuffer(),
@@ -337,25 +475,23 @@ export const SMintTx = async (
     ],
     info.TOKEN_METADATA_PROGRAM_ID
   );
-  const MintTokenAccount = await getAssociatedTokenAddress(
-    MintKey,
-    wallet.publicKey
-  );
+  const MintTokenAccount = await getAssociatedTokenAddress(MintKey, payerPublicKey);
+
   try {
-    const tx = new Transaction()
+    const tx = new Transaction();
     const mint_ix = await smint(
-      { id,bump },
+      { bump },
       {
-        payer:wallet.publicKey,
-        treasure:TreasuryKey,
-        mint:MintKey,
-        collectionMint:CollectionKey,
-        tokenAccount:MintTokenAccount,
-        masterEditionAccount:masterEdition,
-        collectionMasterEdition:CmasterEdition,
-        nftMetadata:metadataAddress,
-        collectionMetadata:CmetadataAddress,
-        delegate:delegate,
+        payer: payerPublicKey,
+        treasure: TreasuryKey,
+        mint: MintKey,
+        collectionMint: CollectionKey,
+        tokenAccount: MintTokenAccount,
+        masterEditionAccount: masterEdition,
+        collectionMasterEdition: CmasterEdition,
+        nftMetadata: metadataAddress,
+        collectionMetadata: CmetadataAddress,
+        delegate: delegate,
         associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
         rent: SYSVAR_RENT_PUBKEY,
         systemProgram: SystemProgram.programId,
@@ -364,36 +500,18 @@ export const SMintTx = async (
       },
       provider
     );
+
     let cump_limit = ComputeBudgetProgram.setComputeUnitLimit({ units: 800_000 });
     tx.add(mint_ix).add(cump_limit);
-    try {
-      tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
-      tx.feePayer = wallet.publicKey
-      if (wallet.signTransaction) {
-        const signedTx = await wallet.signTransaction(tx)
-        const sTx = signedTx.serialize()
-        const signature = await connection.sendRawTransaction(sTx, { skipPreflight: false })
 
-        const blockhash = await connection.getLatestBlockhash()
-        await connection.confirmTransaction({
-          signature,
-          blockhash: blockhash.blockhash,
-          lastValidBlockHeight: blockhash.lastValidBlockHeight
-        }, "processed");
-        pass = true;
-          // alert(`Successfully Mint NFT.\n Signature: ${signature}`)
-            enqueueSnackbar(`TX: ${signature}`,{variant: "success"});
-
-        console.log({
-          signature,
-          blockhash,
-        });
-      }
-    } catch (error) {
-      console.log("Error in Mint NFT trasnaction", error)
-    }
+    tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    tx.feePayer = payerPublicKey;
+   
+    const serializedTx = tx.serialize({requireAllSignatures: false, verifySignatures: false});
+    return { success: true, transaction: serializedTx };
   } catch (error) {
-    console.log("NFT address is incorrect", error)
+    console.log("Error in Mint NFT transaction", error);
+    return { success: false, error: error.message };
   }
-  return pass
-}
+};
+

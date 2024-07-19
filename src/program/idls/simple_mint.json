@@ -21,7 +21,12 @@
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "supply",
+          "type": "u64"
+        }
+      ]
     },
     {
       "name": "mintCollection",
@@ -175,10 +180,6 @@
       ],
       "args": [
         {
-          "name": "id",
-          "type": "u64"
-        },
-        {
           "name": "bump",
           "type": "u8"
         }
@@ -194,6 +195,10 @@
           {
             "name": "admin",
             "type": "publicKey"
+          },
+          {
+            "name": "supply",
+            "type": "u64"
           },
           {
             "name": "mints",
@@ -231,8 +236,8 @@
     },
     {
       "code": 6005,
-      "name": "IncorrectAmount",
-      "msg": "Incorrect Amount."
+      "name": "IncorrectSupply",
+      "msg": "Mint Amount Exceeded Supply"
     },
     {
       "code": 6006,
@@ -286,6 +291,6 @@
     }
   ],
   "metadata": {
-    "address": "FthD8b6h9o9FMhVw9LW9kcHn8RyGo9KUW7aVpdJNhZxX"
+    "address": "7Fsi5Frik3tyTeTk4KkihvaCT2CdRcncLodte2Tt8j4A"
   }
 }

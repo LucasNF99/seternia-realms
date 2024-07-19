@@ -37,7 +37,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={classNames(spectral.className, "overflow-x-hidden text-white")}>
         <ConnectionProvider endpoint={endpoint}>
-          <WalletProvider wallets={wallets}>
+          <WalletProvider wallets={wallets} autoConnect>
             <WalletModalProvider>
               {children}<CustomToast />
             </WalletModalProvider>

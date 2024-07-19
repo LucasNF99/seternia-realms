@@ -6,7 +6,7 @@ import { SeterniaIdl ,type Seternia,SimpleMintIdl,type SimpleMint } from '../pro
 
 const programId = new PublicKey('7fHyCXb2goZ8cGDm8CqY9rogsZm4FySD2QSznEUJHZvb');
 
-const programIdS = new PublicKey('FthD8b6h9o9FMhVw9LW9kcHn8RyGo9KUW7aVpdJNhZxX');
+const programIdS = new PublicKey('7Fsi5Frik3tyTeTk4KkihvaCT2CdRcncLodte2Tt8j4A');
 
 
 export const getProgram = (provider: Provider) => new Program(
@@ -88,7 +88,6 @@ export async function smint(
 ): Promise<TransactionInstruction> {
     const simpleProgram = getProgramS(provider);
     const ix = await simpleProgram.methods.mint(
-        args.id,
         args.bump
     ).accountsStrict({
             payer: accounts.payer,
