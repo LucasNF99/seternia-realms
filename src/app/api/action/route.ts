@@ -15,7 +15,7 @@ export async function GET(req: Request) {
 }
 
 export async function POST(request: Request) {
-  const connection = new Connection(clusterApiUrl('devnet'));
+  const connection = new Connection('https://devnet.sonic.game/');
   const requestBody: ActionPostRequest = await request.json();
   const userPubkey = new PublicKey(requestBody.account);
 
