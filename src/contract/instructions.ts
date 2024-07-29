@@ -6,7 +6,7 @@ import { SeterniaIdl ,type Seternia,SimpleMintIdl,type SimpleMint } from '../pro
 
 const programId = new PublicKey('7fHyCXb2goZ8cGDm8CqY9rogsZm4FySD2QSznEUJHZvb');
 
-const programIdS = new PublicKey('7Fsi5Frik3tyTeTk4KkihvaCT2CdRcncLodte2Tt8j4A');
+const programIdS = new PublicKey('AtzBD1w2jbi2TXejYGvN1ycKMMEm7VaBQCxuKyQFJZtf');
 
 
 export const getProgram = (provider: Provider) => new Program(

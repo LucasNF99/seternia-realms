@@ -7,8 +7,8 @@ export async function GET(req: Request) {
   const response: ActionGetResponse = {
     icon: 'https://raw.githubusercontent.com/LucasNF99/seternia-realms/main/public/institutional/readmeTitle.png',
     description: 'This rune is lorem...',
-    title: 'Seternia rune!',
-    label: 'Mint your rune!',
+    title: 'Seternia pass!',
+    label: 'Mint your pass!',
   }
   
   return Response.json(response, { headers: ACTIONS_CORS_HEADERS });

@@ -25,6 +25,18 @@ export type SimpleMint = {
         {
           "name": "supply",
           "type": "u64"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "uri",
+          "type": "string"
+        },
+        {
+          "name": "symbol",
+          "type": "string"
         }
       ]
     },
@@ -195,6 +207,18 @@ export type SimpleMint = {
           {
             "name": "admin",
             "type": "publicKey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
           },
           {
             "name": "supply",
@@ -319,6 +343,18 @@ export const IDL: SimpleMint = {
         {
           "name": "supply",
           "type": "u64"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "uri",
+          "type": "string"
+        },
+        {
+          "name": "symbol",
+          "type": "string"
         }
       ]
     },
@@ -489,6 +525,18 @@ export const IDL: SimpleMint = {
           {
             "name": "admin",
             "type": "publicKey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
           },
           {
             "name": "supply",

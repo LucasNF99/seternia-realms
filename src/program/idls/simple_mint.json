@@ -25,6 +25,18 @@
         {
           "name": "supply",
           "type": "u64"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "uri",
+          "type": "string"
+        },
+        {
+          "name": "symbol",
+          "type": "string"
         }
       ]
     },
@@ -197,6 +209,18 @@
             "type": "publicKey"
           },
           {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
+          },
+          {
             "name": "supply",
             "type": "u64"
           },
@@ -291,6 +315,6 @@
     }
   ],
   "metadata": {
-    "address": "7Fsi5Frik3tyTeTk4KkihvaCT2CdRcncLodte2Tt8j4A"
+    "address": "AtzBD1w2jbi2TXejYGvN1ycKMMEm7VaBQCxuKyQFJZtf"
   }
 }
