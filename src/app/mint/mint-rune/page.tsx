@@ -1,4 +1,4 @@
-"use client";
+
 import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 
 import { useRouter } from 'next/navigation'
@@ -7,12 +7,15 @@ import mint from '@/../public/components/buttons/mint-button.svg';
 import Image from "next/image";
 import Link from "next/link";
 import { Pages } from "@/presentation/enums/pages";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: 'Mint Rune'
+}
 export default function QuickSelect() {
-  const router = useRouter();
-  const wallet = useAnchorWallet();
-  const { connection } = useConnection()
-  const { publicKey } = useWallet()
+  // const router = useRouter();
+  // const wallet = useAnchorWallet();
+  // const { connection } = useConnection()
+  // const { publicKey } = useWallet()
 
   // const simple_mint = async () => {
   //   console.log(publicKey)

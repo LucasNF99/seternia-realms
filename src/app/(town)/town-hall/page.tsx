@@ -1,13 +1,10 @@
-"use client";
-
 import { Pages } from "@/presentation/enums/pages";
+import { Metadata } from "next";
 import Link from "next/link";
-
-export default function Swap() {
-
-
-
-
+export const metadata: Metadata = {
+  title: 'Town Hall'
+}
+export default function TownHall() {
   return (
 
     <div className="flex h-full justify-center items-center">

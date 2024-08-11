@@ -7,7 +7,6 @@ import { active,mint,smint,getProgram, getProgramS } from "./instructions";;
 import { Metaplex, walletAdapterIdentity } from "@metaplex-foundation/js"
 import BN from "bn.js";
 import * as anchor from '@project-serum/anchor';
-import { useSnackbar } from "@/presentation/hook/useSnackbar";
  import { toast } from 'react-toastify';
 import Link from "next/link";
 const info = {
@@ -23,7 +22,7 @@ const CustomToastWithLink = (tx) => (
 
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
-const { enqueueSnackbar } = useSnackbar();
+
 
 export const MintTx = async (
   wallet: AnchorWallet,
@@ -258,8 +257,6 @@ export const MintTx = async (
               lastValidBlockHeight: blockhash.lastValidBlockHeight
             }, "processed");
             pass = true;
-            // alert(`Successfully Mint NFT.\n Signature: ${signature}`)
-            	enqueueSnackbar(`TX: ${signature}`,{variant: "success"});
 
             console.log("Successfully Mint NFT.\n Signature: ", signature);
           }

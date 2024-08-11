@@ -1,0 +1,19 @@
+
+.border-gradient.bg-main {
+  --bg-color: #261708;
+}
+.border-gradient.bg-tertiary {
+  --bg-color: #754515;
+}
+
+.border-gradient.bg-brown {
+  --bg-color: #6B3C24;
+}
+
+.border-gradient {
+  --bg-color: black; /* Define a cor de fundo padrão. Você pode mudar isso conforme necessário. */
+  border: 2px solid transparent; /* Define a largura da borda e a cor transparente */
+  background-image: linear-gradient(var(--bg-color), var(--bg-color)), linear-gradient(to right, #EB8C2A, #754515); /* Duas imagens de fundo: uma sólida e uma gradiente */
+  background-origin: border-box; /* Define a origem do fundo */
+  background-clip: padding-box, border-box; /* Clipa a borda com o fundo */
+}
